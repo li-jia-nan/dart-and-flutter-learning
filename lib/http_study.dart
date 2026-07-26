@@ -28,6 +28,8 @@ Future<void> _doGetClick() async {
     final url = Uri.parse('https://vercel.com/design.md');
     final response = await http.get(url);
 
+    debugPrint('请求 response: $response');
+
     if (response.statusCode == 200) {
       debugPrint('请求成功，响应数据：${response.body}');
     } else {
