@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -22,7 +24,7 @@ class _HttpStudyState extends State<HttpStudy> {
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(16),
-              child: SelectableText('Http Get 请求结果：$responseData'),
+              child: SelectableText('HTTP 请求结果：$responseData'),
             ),
           ),
         ],
@@ -42,31 +44,35 @@ class _HttpStudyState extends State<HttpStudy> {
   Future<void> _doGetClick() async {
     final url = Uri.parse('https://vercel.com/design.md');
     final response = await http.get(url);
+    if (!mounted) {
+      return;
+    }
     if (response.statusCode == 200) {
-      debugPrint('请求成功，响应数据：${response.body}');
       setState(() {
         responseData = response.body;
       });
     } else {
       setState(() {
-        responseData = '请求失败：${response.body}';
+        responseData = 'GET 请求失败（${response.statusCode}）：${response.body}';
       });
     }
   }
 
   // 发送 Http Post 请求
   Future<void> _doPostClick() async {
-    final uri = Uri.parse('https://postman-echo.com/post');
-    const params = {'key': 'value'}; // 这里可以根据实际需求设置请求参数
-    final response = await http.post(uri, body: params);
+    final uri = Uri.parse('https://httpbin.org/post');
+    const params = {'key': 'value222'};
+    final response = await http.post(uri, body: jsonEncode(params));
+    if (!mounted) {
+      return;
+    }
     if (response.statusCode == 200) {
-      debugPrint('POST 请求成功，响应数据：${response.body}');
       setState(() {
         responseData = response.body;
       });
     } else {
       setState(() {
-        responseData = 'POST 请求失败：${response.body}';
+        responseData = 'POST 请求失败（${response.statusCode}）：${response.body}';
       });
     }
   }
