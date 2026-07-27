@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-// import './http_study.dart';
-import './json_parsing.dart';
+import 'future_study.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: const JsonParsingPage(),
+      home: const FutureStudy(),
     );
   }
 }
