@@ -62,7 +62,7 @@ class _HttpStudyState extends State<HttpStudy> {
   Future<void> _doPostClick() async {
     final uri = Uri.parse('https://httpbin.org/post');
     const params = {'key': 'value222'};
-    final response = await http.post(uri, body: jsonEncode(params));
+    final response = await http.post(uri, body: params);
     if (!mounted) {
       return;
     }
