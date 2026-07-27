@@ -36,19 +36,26 @@ class _SPCounterWidgetState extends State<SPCounterWidget> {
     );
   }
 
-  void _incrementCounter() async {
+  Future<void> _incrementCounter() async {
     final prefs = SharedPreferencesAsync();
+    if (!mounted) {
+      return;
+    }
     setState(() {
       countString = "$countString 1";
     });
-    int counter = (prefs.getInt('counter') ?? 0) + 1;
+    final counter = (await prefs.getInt('counter') ?? 0) + 1;
     await prefs.setInt('counter', counter);
   }
 
-  void _getCounter() {
+  Future<void> _getCounter() async {
     final prefs = SharedPreferencesAsync();
+    final counter = await prefs.getInt('counter') ?? 0;
+    if (!mounted) {
+      return;
+    }
     setState(() {
-      localCountString = prefs.getInt('counter')?.toString() ?? '0';
+      localCountString = counter.toString();
     });
   }
 }
