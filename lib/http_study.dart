@@ -12,6 +12,7 @@ class HttpStudy extends StatefulWidget {
 
 class _HttpStudyState extends State<HttpStudy> {
   var responseData = '';
+  var responseData2 = '';
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +22,8 @@ class _HttpStudyState extends State<HttpStudy> {
         children: [
           _doGetBtn(),
           _doPostBtn(),
+          _doPostJsonBtn(),
+          Text('解析的请求结果：$responseData2'),
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(16),
@@ -32,12 +35,19 @@ class _HttpStudyState extends State<HttpStudy> {
     );
   }
 
+  // 发送 Http Get 请求按钮
   Widget _doGetBtn() {
-    return ElevatedButton(onPressed: _doGetClick, child: const Text('发送 Http Get 请求'));
+    return ElevatedButton(onPressed: _doGetClick, child: const Text('发送 Get 请求'));
   }
 
+  // 发送 Http Post 请求按钮
   Widget _doPostBtn() {
-    return ElevatedButton(onPressed: _doPostClick, child: const Text('发送 Http Post 请求'));
+    return ElevatedButton(onPressed: _doPostClick, child: const Text('发送 Post 请求'));
+  }
+
+  // 发送 JSON 数据的 Http Post 请求按钮
+  Widget _doPostJsonBtn() {
+    return ElevatedButton(onPressed: _doPostJsonClick, child: const Text('发送 JSON 数据的 Post 请求'));
   }
 
   // 发送 Http Get 请求
@@ -69,6 +79,31 @@ class _HttpStudyState extends State<HttpStudy> {
     if (response.statusCode == 200) {
       setState(() {
         responseData = response.body;
+      });
+    } else {
+      setState(() {
+        responseData = 'POST 请求失败（${response.statusCode}）：${response.body}';
+      });
+    }
+  }
+
+  // 发送 JSON 数据的 Http Post 请求
+  Future<void> _doPostJsonClick() async {
+    final uri = Uri.parse('https://httpbin.org/post');
+    const params = {'key': 'value333'};
+    final response = await http.post(
+      uri,
+      body: jsonEncode(params),
+      headers: {'Content-Type': 'application/json'},
+    );
+    if (!mounted) {
+      return;
+    }
+    if (response.statusCode == 200) {
+      var jsonResponse = jsonDecode(response.body);
+      setState(() {
+        responseData = response.body;
+        responseData2 = jsonResponse['json'].toString();
       });
     } else {
       setState(() {
