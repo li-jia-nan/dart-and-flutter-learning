@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learning_app/dao/login_dao.dart';
 import 'package:learning_app/utils/string_util.dart';
 import 'package:learning_app/utils/view_util.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -85,7 +86,12 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _login() {
-    //
+    try {
+      var result = LoginDao.login(userName: username!, password: password!);
+      debugPrint('登录结果: $result');
+    } catch (e) {
+      debugPrint('登录异常: $e');
+    }
   }
 
   Future<void> _jumpToRegister() async {
