@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learning_app/utils/string_util.dart';
 import 'package:learning_app/utils/view_util.dart';
 import 'package:learning_app/widget/input_widget.dart';
+import 'package:learning_app/widget/login_widget.dart';
 
 // 登录页
 class LoginPage extends StatefulWidget {
@@ -55,6 +56,8 @@ class _LoginPageState extends State<LoginPage> {
               _checkInput();
             },
           ),
+          hiSpace(height: 45),
+          LoginButton('登录', enable: loginEnable, onPressed: _login),
         ],
       ),
     );
@@ -70,5 +73,9 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       loginEnable = enable;
     });
+  }
+
+  void _login() {
+    //
   }
 }

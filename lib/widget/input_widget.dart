@@ -9,11 +9,11 @@ class InputWidget extends StatelessWidget {
 
   const InputWidget(
     this.hint, {
-    Key? key,
+    super.key,
     this.onChanged,
     this.obscureText = false,
     this.keyboardType,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
