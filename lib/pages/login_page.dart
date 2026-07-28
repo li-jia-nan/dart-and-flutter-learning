@@ -61,16 +61,14 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _checkInput() {
+    bool enable;
+    if (isNotEmpty(username) && isNotEmpty(password)) {
+      enable = true;
+    } else {
+      enable = false;
+    }
     setState(() {
-      bool enable;
-      if (isNotEmpty(username) && isNotEmpty(password)) {
-        enable = true;
-      } else {
-        enable = false;
-      }
-      setState(() {
-        loginEnable = enable;
-      });
+      loginEnable = enable;
     });
   }
 }
