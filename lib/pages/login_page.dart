@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:learning_app/utils/string_util.dart';
 import 'package:learning_app/utils/view_util.dart';
+import 'package:learning_app/widget/input_widget.dart';
 
 // 登录页
 class LoginPage extends StatefulWidget {
@@ -37,8 +39,38 @@ class _LoginPageState extends State<LoginPage> {
           hiSpace(height: 100),
           const Text('账号密码登录', style: TextStyle(fontSize: 26, color: Colors.white)),
           hiSpace(height: 40),
+          InputWidget(
+            '请输入账号',
+            onChanged: (text) {
+              username = text;
+              _checkInput();
+            },
+          ),
+          hiSpace(height: 10),
+          InputWidget(
+            '请输入密码',
+            obscureText: true,
+            onChanged: (text) {
+              password = text;
+              _checkInput();
+            },
+          ),
         ],
       ),
     );
+  }
+
+  void _checkInput() {
+    setState(() {
+      bool enable;
+      if (isNotEmpty(username) && isNotEmpty(password)) {
+        enable = true;
+      } else {
+        enable = false;
+      }
+      setState(() {
+        loginEnable = enable;
+      });
+    });
   }
 }
