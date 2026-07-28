@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:learning_app/dao/header_util.dart';
+import 'package:learning_app/utils/navigator_util.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginDao {
@@ -33,5 +34,12 @@ class LoginDao {
   static Future<String?> getBoardingPass() async {
     final prefs = SharedPreferencesAsync();
     return await prefs.getString(boardingPass);
+  }
+
+  // 退出登录
+  static Future<void> logOut() async {
+    final prefs = SharedPreferencesAsync();
+    await prefs.remove(boardingPass);
+    NavigatorUtil.goToLogin();
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_app/dao/login_dao.dart';
+import 'package:learning_app/utils/navigator_util.dart';
 import 'package:learning_app/utils/string_util.dart';
 import 'package:learning_app/utils/view_util.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -59,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
             },
           ),
           hiSpace(height: 45),
-          LoginButton('登录', enable: loginEnable, onPressed: _login),
+          LoginButton('登录', enable: loginEnable, onPressed: () => _login(context)),
           hiSpace(height: 15),
           Align(
             alignment: Alignment.centerRight,
@@ -85,12 +86,14 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-  void _login() {
+  void _login(BuildContext context) {
     try {
       var result = LoginDao.login(userName: username!, password: password!);
       debugPrint('登录结果: $result');
+      NavigatorUtil.goToHome(context);
     } catch (e) {
       debugPrint('登录异常: $e');
+      NavigatorUtil.goToHome(context);
     }
   }
 

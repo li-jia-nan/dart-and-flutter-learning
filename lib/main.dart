@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:learning_app/dao/login_dao.dart';
+import 'package:learning_app/pages/home_page.dart';
 import 'pages/login_page.dart';
 
 void main() {
@@ -14,7 +16,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: const LoginPage(),
+      home: FutureBuilder<dynamic>(
+        future: 'xxx',
+        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (LoginDao.getBoardingPass() == null) {
+              return const LoginPage();
+            } else {
+              return const HomePage();
+            }
+          } else {
+            return Scaffold(body: Center(child: CircularProgressIndicator()));
+          }
+        },
+      ),
     );
   }
 }
