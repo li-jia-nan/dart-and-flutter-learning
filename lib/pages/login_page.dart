@@ -22,7 +22,10 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Stack(children: [..._background(), _content()]));
+    return Scaffold(
+      resizeToAvoidBottomInset: false, // 避免键盘弹出时导致布局跳动
+      body: Stack(children: [..._background(), _content()]),
+    );
   }
 
   List<Widget> _background() {

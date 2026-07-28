@@ -16,17 +16,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: FutureBuilder<dynamic>(
-        future: 'xxx',
-        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+      home: FutureBuilder<String?>(
+        future: LoginDao.getBoardingPass(),
+        builder: (BuildContext context, AsyncSnapshot<String?> snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            if (LoginDao.getBoardingPass() == null) {
+            if (snapshot.data == null) {
               return const LoginPage();
             } else {
               return const HomePage();
             }
           } else {
-            return Scaffold(body: Center(child: CircularProgressIndicator()));
+            return const Scaffold(body: Center(child: CircularProgressIndicator()));
           }
         },
       ),
