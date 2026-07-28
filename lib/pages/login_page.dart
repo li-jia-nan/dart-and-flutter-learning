@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learning_app/utils/string_util.dart';
 import 'package:learning_app/utils/view_util.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:learning_app/widget/input_widget.dart';
 import 'package:learning_app/widget/login_widget.dart';
 
@@ -58,6 +59,14 @@ class _LoginPageState extends State<LoginPage> {
           ),
           hiSpace(height: 45),
           LoginButton('登录', enable: loginEnable, onPressed: _login),
+          hiSpace(height: 15),
+          Align(
+            alignment: Alignment.centerRight,
+            child: InkWell(
+              onTap: _jumpToRegister,
+              child: const Text('注册帐号', style: TextStyle(color: Colors.white)),
+            ),
+          ),
         ],
       ),
     );
@@ -77,5 +86,14 @@ class _LoginPageState extends State<LoginPage> {
 
   void _login() {
     //
+  }
+
+  Future<void> _jumpToRegister() async {
+    Uri uri = Uri.parse('https://www.baidu.com');
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.inAppBrowserView);
+    } else {
+      throw 'Could not launch $uri';
+    }
   }
 }
