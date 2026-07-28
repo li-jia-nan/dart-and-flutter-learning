@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'shared_preferences_study.dart';
+import 'pages/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: const SPCounterWidget(),
+      home: const LoginPage(),
     );
   }
 }
