@@ -1,5 +1,4 @@
 // 首页底部导航栏
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:learning_app/pages/home_page.dart';
 import 'package:learning_app/pages/my_page.dart';
