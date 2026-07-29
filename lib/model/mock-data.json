@@ -6,45 +6,57 @@
       "searchUrl": "https://api.example.com/search"
     },
     "bannerList": [
-      { "icon": "", "url": "" },
-      { "icon": "", "url": "" },
-      { "icon": "", "url": "" },
-      { "icon": "", "url": "" }
+      {
+        "icon": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&h=480&q=85",
+        "url": "https://you.ctrip.com/place/sanya61.html"
+      },
+      {
+        "icon": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1200&h=480&q=85",
+        "url": "https://you.ctrip.com/place/lijiang32.html"
+      },
+      {
+        "icon": "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&h=480&q=85",
+        "url": "https://you.ctrip.com/place/xiamen21.html"
+      },
+      {
+        "icon": "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&h=480&q=85",
+        "url": "https://you.ctrip.com/place/chengdu104.html"
+      }
     ],
     "localNavList": [
       {
         "icon": "icon1.png",
         "title": "Local Nav 1",
-        "url": "",
-        "statusBarColor": "#ffffff",
+        "url": "https://you.ctrip.com/sight/",
+        "statusBarColor": "#1976D2",
         "hideAppBar": false
       },
       {
         "icon": "icon1.png",
         "title": "Local Nav 1",
-        "url": "",
-        "statusBarColor": "#ffffff",
+        "url": "https://hotels.ctrip.com/",
+        "statusBarColor": "#00897B",
         "hideAppBar": false
       },
       {
         "icon": "icon1.png",
         "title": "Local Nav 1",
-        "url": "",
-        "statusBarColor": "#ffffff",
+        "url": "https://flights.ctrip.com/",
+        "statusBarColor": "#7B1FA2",
         "hideAppBar": false
       },
       {
         "icon": "icon1.png",
         "title": "Local Nav 1",
-        "url": "",
-        "statusBarColor": "#ffffff",
+        "url": "https://trains.ctrip.com/",
+        "statusBarColor": "#F57C00",
         "hideAppBar": false
       },
       {
         "icon": "icon1.png",
         "title": "Local Nav 1",
-        "url": "",
-        "statusBarColor": "#ffffff",
+        "url": "https://vacations.ctrip.com/",
+        "statusBarColor": "#388E3C",
         "hideAppBar": false
       }
     ],
@@ -55,31 +67,31 @@
         "mainItem": {
           "title": "Hotel",
           "icon": "hotel.png",
-          "url": "",
-          "statusBarColor": "#ffffff"
+          "url": "https://hotels.ctrip.com/",
+          "statusBarColor": "#D84315"
         },
         "item1": {
           "title": "Hotel 1",
-          "url": "",
-          "statusBarColor": "#ffffff",
+          "url": "https://hotels.ctrip.com/hotels/list?city=2",
+          "statusBarColor": "#EF5350",
           "hideAppBar": false
         },
         "item2": {
           "title": "Hotel 1",
-          "url": "",
-          "statusBarColor": "#ffffff",
+          "url": "https://hotels.ctrip.com/hotels/list?city=1",
+          "statusBarColor": "#EC407A",
           "hideAppBar": false
         },
         "item3": {
           "title": "Hotel 1",
-          "url": "",
-          "statusBarColor": "#ffffff",
+          "url": "https://hotels.ctrip.com/hotels/list?city=30",
+          "statusBarColor": "#AB47BC",
           "hideAppBar": false
         },
         "item4": {
           "title": "Hotel 1",
-          "url": "",
-          "statusBarColor": "#ffffff",
+          "url": "https://hotels.ctrip.com/hotels/list?city=28",
+          "statusBarColor": "#7E57C2",
           "hideAppBar": false
         }
       },
@@ -89,31 +101,31 @@
         "mainItem": {
           "title": "Flight",
           "icon": "flight.png",
-          "url": "",
-          "statusBarColor": "#ffffff"
+          "url": "https://flights.ctrip.com/online/channel/domestic",
+          "statusBarColor": "#1565C0"
         },
         "item1": {
           "title": "Flight 1",
-          "url": "",
-          "statusBarColor": "#ffffff",
+          "url": "https://flights.ctrip.com/online/channel/international",
+          "statusBarColor": "#1E88E5",
           "hideAppBar": false
         },
         "item2": {
           "title": "Flight 1",
-          "url": "",
-          "statusBarColor": "#ffffff",
+          "url": "https://flights.ctrip.com/online/list/oneway-sha-bjs",
+          "statusBarColor": "#039BE5",
           "hideAppBar": false
         },
         "item3": {
           "title": "Flight 1",
-          "url": "",
-          "statusBarColor": "#ffffff",
+          "url": "https://flights.ctrip.com/online/list/oneway-bjs-ctu",
+          "statusBarColor": "#00ACC1",
           "hideAppBar": false
         },
         "item4": {
           "title": "Flight 1",
-          "url": "",
-          "statusBarColor": "#ffffff",
+          "url": "https://flights.ctrip.com/online/list/oneway-can-syx",
+          "statusBarColor": "#26A69A",
           "hideAppBar": false
         }
       },
@@ -123,99 +135,99 @@
         "mainItem": {
           "title": "Travel",
           "icon": "travel.png",
-          "url": "",
-          "statusBarColor": "#ffffff"
+          "url": "https://vacations.ctrip.com/",
+          "statusBarColor": "#2E7D32"
         },
         "item1": {
           "title": "Travel 1",
-          "url": "",
-          "statusBarColor": "#ffffff",
+          "url": "https://vacations.ctrip.com/tours",
+          "statusBarColor": "#43A047",
           "hideAppBar": false
         },
         "item2": {
           "title": "Travel 1",
-          "url": "",
-          "statusBarColor": "#ffffff",
+          "url": "https://vacations.ctrip.com/grouptravel",
+          "statusBarColor": "#7CB342",
           "hideAppBar": false
         },
         "item3": {
           "title": "Travel 1",
-          "url": "",
-          "statusBarColor": "#ffffff",
+          "url": "https://vacations.ctrip.com/freetravel",
+          "statusBarColor": "#C0CA33",
           "hideAppBar": false
         },
         "item4": {
           "title": "Travel 1",
-          "url": "",
-          "statusBarColor": "#ffffff",
+          "url": "https://cruise.ctrip.com/",
+          "statusBarColor": "#F9A825",
           "hideAppBar": false
         }
       }
     },
     "subNavList": [
       {
-        "icon": "",
+        "icon": "https://cdn.jsdelivr.net/gh/jdecked/twemoji@latest/assets/72x72/1f5fa.png",
         "title": "Sub Nav 1",
-        "url": "",
+        "url": "https://vacations.ctrip.com/freetravel",
         "hideAppBar": false
       },
       {
-        "icon": "",
+        "icon": "https://cdn.jsdelivr.net/gh/jdecked/twemoji@latest/assets/72x72/1f4f6.png",
         "title": "Sub Nav 1",
-        "url": "",
+        "url": "https://huodong.ctrip.com/wifi",
         "hideAppBar": false
       },
       {
-        "icon": "",
+        "icon": "https://cdn.jsdelivr.net/gh/jdecked/twemoji@latest/assets/72x72/1f6e1.png",
         "title": "Sub Nav 1",
-        "url": "",
+        "url": "https://insurance.ctrip.com/",
         "hideAppBar": false
       },
       {
-        "icon": "",
+        "icon": "https://cdn.jsdelivr.net/gh/jdecked/twemoji@latest/assets/72x72/1f4b1.png",
         "title": "Sub Nav 1",
-        "url": "",
+        "url": "https://pages.ctrip.com/tour/visa",
         "hideAppBar": false
       },
       {
-        "icon": "",
+        "icon": "https://cdn.jsdelivr.net/gh/jdecked/twemoji@latest/assets/72x72/1f4cd.png",
         "title": "Sub Nav 1",
-        "url": "",
+        "url": "https://you.ctrip.com/",
         "hideAppBar": false
       }
     ],
     "salesBox": {
-      "icon": "",
-      "moreUrl": "",
+      "icon": "https://cdn.jsdelivr.net/gh/jdecked/twemoji@latest/assets/72x72/1f30f.png",
+      "moreUrl": "https://vacations.ctrip.com/deals",
       "bigCard1": {
-        "icon": "",
-        "url": "",
-        "title": ""
+        "icon": "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=800&h=480&q=85",
+        "url": "https://you.ctrip.com/place/beijing1.html",
+        "title": "北京故宫与长城文化之旅"
       },
       "bigCard2": {
-        "icon": "",
-        "url": "",
-        "title": ""
+        "icon": "https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=800&h=480&q=85",
+        "url": "https://you.ctrip.com/place/sanya61.html",
+        "title": "三亚海滨度假五日游"
       },
       "smallCard1": {
-        "icon": "",
-        "url": "",
-        "title": ""
+        "icon": "https://images.unsplash.com/photo-1537531383496-f4749b8032cf?auto=format&fit=crop&w=600&h=360&q=85",
+        "url": "https://you.ctrip.com/place/hangzhou14.html",
+        "title": "杭州西湖周末漫游"
       },
       "smallCard2": {
-        "icon": "",
-        "url": "",
-        "title": ""
+        "icon": "https://images.unsplash.com/photo-1548919973-5cef591cdbc9?auto=format&fit=crop&w=600&h=360&q=85",
+        "url": "https://you.ctrip.com/place/shanghai2.html",
+        "title": "上海城市夜景打卡"
       },
       "smallCard3": {
-        "icon": "",
-        "url": "",
-        "title": ""
+        "icon": "https://images.unsplash.com/photo-1516406742981-2b7d67ec4ae8?auto=format&fit=crop&w=600&h=360&q=85",
+        "url": "https://you.ctrip.com/place/chengdu104.html",
+        "title": "成都美食与熊猫之旅"
       },
       "smallCard4": {
-        "icon": "",
-        "url": "",
-        "title": ""
+        "icon": "https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=600&h=360&q=85",
+        "url": "https://you.ctrip.com/place/xiamen21.html",
+        "title": "厦门鼓浪屿轻旅行"
       }
     }
   }
