@@ -34,19 +34,18 @@ class VerticalListPage extends StatelessWidget {
       title: title,
       home: Scaffold(
         appBar: AppBar(title: const Text(title)),
-        body: ListView(children: _buildList()),
+        body: ListView.separated(
+          itemCount: cityNames.length,
+          itemBuilder: (context, index) => _item(cityNames[index]),
+          separatorBuilder: (context, index) => const SizedBox(height: 10),
+        ),
       ),
     );
-  }
-
-  List<Widget> _buildList() {
-    return cityNames.map((city) => _item(city)).toList();
   }
 
   Widget _item(String city) {
     return Container(
       height: 80,
-      margin: const EdgeInsets.only(bottom: 5),
       alignment: Alignment.center,
       decoration: const BoxDecoration(color: Colors.amber),
       child: Text(city, style: const TextStyle(color: Colors.white, fontSize: 20)),

@@ -36,20 +36,20 @@ class HorizontalListPage extends StatelessWidget {
         appBar: AppBar(title: const Text(title)),
         body: SizedBox(
           height: 200,
-          child: ListView(scrollDirection: Axis.horizontal, children: _buildList()),
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            itemCount: cityNames.length,
+            itemBuilder: (context, index) => _item(cityNames[index]),
+            separatorBuilder: (context, index) => const SizedBox(width: 10),
+          ),
         ),
       ),
     );
   }
 
-  List<Widget> _buildList() {
-    return cityNames.map((city) => _item(city)).toList();
-  }
-
   Widget _item(String city) {
     return Container(
       width: 160,
-      margin: const EdgeInsets.only(right: 5),
       alignment: Alignment.center,
       decoration: const BoxDecoration(color: Colors.amber),
       child: Text(city, style: const TextStyle(color: Colors.white, fontSize: 20)),

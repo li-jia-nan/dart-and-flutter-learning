@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:learning_app/dao/login_dao.dart';
 import 'package:learning_app/navigator/tab_navigator.dart';
-import 'package:learning_app/pages/horizontal_list_page.dart';
+import 'package:learning_app/pages/expansion_tile_page.dart';
+// import 'package:learning_app/pages/horizontal_list_page.dart';
 // import 'package:learning_app/pages/vertical_list_page.dart';
 import 'package:learning_app/utils/screen_adapter_helper.dart';
 
 void main() {
-  runApp(const HorizontalListPage());
+  runApp(const ExpansionTilePage());
 }
 
 class MyApp extends StatelessWidget {
