@@ -54,7 +54,7 @@ class _TabNavigatorState extends State<TabNavigator> {
     );
   }
 
-  _bottomItem(String title, IconData icon, int index) {
+  BottomNavigationBarItem _bottomItem(String title, IconData icon, int index) {
     return BottomNavigationBarItem(
       icon: Icon(icon, color: _defaultColor),
       activeIcon: Icon(icon, color: _activeColor),
