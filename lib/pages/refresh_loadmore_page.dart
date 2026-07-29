@@ -60,12 +60,22 @@ class _RefreshLoadmorePageState extends State<RefreshLoadmorePage> {
   @override
   void initState() {
     _scrollController.addListener(() {
+      if (!_scrollController.hasClients) {
+        return;
+      }
       if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
         // 到达底部，加载更多数据
+        debugPrint('到达底部，加载更多数据');
         _loadMoreData();
       }
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -91,25 +101,29 @@ class _RefreshLoadmorePageState extends State<RefreshLoadmorePage> {
     return Container(
       height: 80,
       margin: const EdgeInsets.only(bottom: 5),
-      // alignment: Alignment.center,
+      alignment: Alignment.center,
       decoration: const BoxDecoration(color: Colors.redAccent),
       child: Text(city, style: const TextStyle(color: Colors.white, fontSize: 20)),
     );
   }
 
   Future<void> _handleRefresh() async {
-    Future.delayed(const Duration(seconds: 2), () {
-      setState(() {
-        cityNames = cityNames.reversed.toList();
-      });
+    await Future.delayed(const Duration(seconds: 2));
+    if (!mounted) {
+      return;
+    }
+    setState(() {
+      cityNames = cityNames.reversed.toList();
     });
   }
 
   Future<void> _loadMoreData() async {
-    Future.delayed(const Duration(milliseconds: 500), () {
-      setState(() {
-        cityNames.addAll(['新城市1', '新城市2', '新城市3', '新城市4', '新城市5']);
-      });
+    await Future.delayed(const Duration(milliseconds: 500));
+    if (!mounted) {
+      return;
+    }
+    setState(() {
+      cityNames.addAll(['新城市1', '新城市2', '新城市3', '新城市4', '新城市5']);
     });
   }
 }
