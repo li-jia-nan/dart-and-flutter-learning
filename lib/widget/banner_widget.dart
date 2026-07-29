@@ -13,6 +13,7 @@ class BannerWidget extends StatefulWidget {
 
 class _BannerWidgetState extends State<BannerWidget> {
   final CarouselSliderController _controller = CarouselSliderController();
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,9 @@ class _BannerWidgetState extends State<BannerWidget> {
             autoPlay: true,
             viewportFraction: 1.0,
             onPageChanged: (index, reason) {
-              //
+              setState(() {
+                _currentIndex = index;
+              });
             },
           ),
         ),
@@ -55,7 +58,10 @@ class _BannerWidgetState extends State<BannerWidget> {
             width: 6,
             height: 6,
             margin: EdgeInsets.symmetric(vertical: 8, horizontal: 4),
-            decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white.withOpacity(0.9)),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white.withValues(alpha: entry.key == _currentIndex ? 1 : 0.45),
+            ),
           ),
         );
       }).toList(),
