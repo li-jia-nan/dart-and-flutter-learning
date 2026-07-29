@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:learning_app/dao/login_dao.dart';
 import 'package:learning_app/dao/home_dao.dart';
+import 'package:learning_app/model/home_model.dart';
 import 'package:learning_app/widget/banner_widget.dart';
 
 class HomePage extends StatefulWidget {
+  static Config? configModel;
   const HomePage({super.key});
 
   @override
@@ -13,15 +15,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
   static const int appBarScrollOffset = 100;
 
-  final List<String> bannerList = [
-    'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&h=480&q=80',
-    'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&h=480&q=80',
-    'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&h=480&q=80',
-    'https://images.unsplash.com/photo-1558082303-0e7e9bba6e47?auto=format&fit=crop&w=1200&h=480&q=80',
-    'https://images.unsplash.com/photo-1517673132405-a56a62b18caf?auto=format&fit=crop&w=1200&h=480&q=80',
-  ];
-
   double appBarAlpha = 0;
+
+  List<BannerList> bannerList = [];
+  List<LocalNavList> localNavList = [];
+  List<LocalNavList> subNavList = [];
+  GridNav? gridNavModel;
+  SalesBox? salesBoxModel;
 
   Widget get _loginBtn => ElevatedButton(
     onPressed: () {
@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
     children: [
       BannerWidget(bannerList: bannerList),
       _loginBtn,
-      Text(bodyString),
+      Text(gridNavModel?.flight.mainItem.title ?? ''),
       const SizedBox(height: 800, child: ListTile(title: Text('哈哈'))),
     ],
   );
@@ -97,12 +97,21 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
     });
   }
 
-  var bodyString = '';
+  Data? homeData;
+
   Future<void> _handleRefresh() async {
     try {
-      String? result = await HomeDao.fetch();
+      Data? model = await HomeDao.fetch();
+      if (!mounted) {
+        return;
+      }
       setState(() {
-        bodyString = result ?? '';
+        HomePage.configModel = model?.config;
+        localNavList = model?.localNavList ?? [];
+        subNavList = model?.subNavList ?? [];
+        gridNavModel = model?.gridNav;
+        salesBoxModel = model?.salesBox;
+        bannerList = model?.bannerList ?? [];
       });
     } catch (e) {
       debugPrint(e.toString());

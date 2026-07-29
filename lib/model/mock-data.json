@@ -99,13 +99,13 @@
         "startColor": "#4e8ef7",
         "endColor": "#4cc3f7",
         "mainItem": {
-          "title": "Flight",
+          "title": "Fligh让人t",
           "icon": "flight.png",
           "url": "https://flights.ctrip.com/online/channel/domestic",
           "statusBarColor": "#1565C0"
         },
         "item1": {
-          "title": "Flight 1",
+          "title": "Flight 1dd问问",
           "url": "https://flights.ctrip.com/online/channel/international",
           "statusBarColor": "#1E88E5",
           "hideAppBar": false

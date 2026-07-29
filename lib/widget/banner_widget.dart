@@ -1,10 +1,11 @@
 // 轮播图组件封装
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:learning_app/model/home_model.dart';
 import 'package:learning_app/utils/screen_adapter_helper.dart';
 
 class BannerWidget extends StatefulWidget {
-  final List<String> bannerList;
+  final List<BannerList> bannerList;
   const BannerWidget({super.key, required this.bannerList});
 
   @override
@@ -39,12 +40,12 @@ class _BannerWidgetState extends State<BannerWidget> {
     );
   }
 
-  Widget _tabImage(String imageUrl, double width) {
+  Widget _tabImage(BannerList model, double width) {
     return GestureDetector(
       onTap: () {
         // NavigatorUtil.push(context, item);
       },
-      child: Image.network(imageUrl, width: width, fit: BoxFit.cover),
+      child: Image.network(model.icon, width: width, fit: BoxFit.cover),
     );
   }
 
