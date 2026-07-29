@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_app/dao/login_dao.dart';
+import 'package:learning_app/dao/home_dao.dart';
 import 'package:learning_app/widget/banner_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -44,9 +45,16 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
     children: [
       BannerWidget(bannerList: bannerList),
       _loginBtn,
+      Text(bodyString),
       const SizedBox(height: 800, child: ListTile(title: Text('哈哈'))),
     ],
   );
+
+  @override
+  void initState() {
+    super.initState();
+    _handleRefresh();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,5 +95,17 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
     setState(() {
       appBarAlpha = alpha;
     });
+  }
+
+  var bodyString = '';
+  Future<void> _handleRefresh() async {
+    try {
+      String? result = await HomeDao.fetch();
+      setState(() {
+        bodyString = result ?? '';
+      });
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 }

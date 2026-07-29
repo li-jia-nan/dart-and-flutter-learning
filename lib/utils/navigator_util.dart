@@ -6,7 +6,6 @@ class NavigatorUtil {
   static BuildContext? _context;
   static void updateContext(BuildContext context) {
     NavigatorUtil._context = context;
-    print('NavigatorUtil context updated: $_context');
   }
 
   // 跳转到指定页面
