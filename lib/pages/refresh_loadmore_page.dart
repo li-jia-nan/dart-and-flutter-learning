@@ -32,6 +32,8 @@ class RefreshLoadmorePage extends StatefulWidget {
 }
 
 class _RefreshLoadmorePageState extends State<RefreshLoadmorePage> {
+  final ScrollController _scrollController = ScrollController();
+
   List<String> cityNames = [
     '北京',
     '上海',
@@ -57,6 +59,12 @@ class _RefreshLoadmorePageState extends State<RefreshLoadmorePage> {
 
   @override
   void initState() {
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+        // 到达底部，加载更多数据
+        _loadMoreData();
+      }
+    });
     super.initState();
   }
 
@@ -67,7 +75,10 @@ class _RefreshLoadmorePageState extends State<RefreshLoadmorePage> {
       title: title,
       home: Scaffold(
         appBar: AppBar(title: const Text(title)),
-        body: ListView(children: _buildList()),
+        body: RefreshIndicator(
+          onRefresh: _handleRefresh,
+          child: ListView(controller: _scrollController, children: _buildList()),
+        ),
       ),
     );
   }
@@ -84,5 +95,21 @@ class _RefreshLoadmorePageState extends State<RefreshLoadmorePage> {
       decoration: const BoxDecoration(color: Colors.redAccent),
       child: Text(city, style: const TextStyle(color: Colors.white, fontSize: 20)),
     );
+  }
+
+  Future<void> _handleRefresh() async {
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        cityNames = cityNames.reversed.toList();
+      });
+    });
+  }
+
+  Future<void> _loadMoreData() async {
+    Future.delayed(const Duration(milliseconds: 500), () {
+      setState(() {
+        cityNames.addAll(['新城市1', '新城市2', '新城市3', '新城市4', '新城市5']);
+      });
+    });
   }
 }
