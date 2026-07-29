@@ -31,6 +31,7 @@ class _BannerWidgetState extends State<BannerWidget> {
             },
           ),
         ),
+        Positioned(bottom: 10, left: 0, right: 0, child: _indicator()),
       ],
     );
   }
@@ -41,6 +42,23 @@ class _BannerWidgetState extends State<BannerWidget> {
         // NavigatorUtil.push(context, item);
       },
       child: Image.network(imageUrl, width: width, fit: BoxFit.cover),
+    );
+  }
+
+  Widget _indicator() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: widget.bannerList.asMap().entries.map((entry) {
+        return GestureDetector(
+          onTap: () => _controller.animateToPage(entry.key),
+          child: Container(
+            width: 6,
+            height: 6,
+            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+            decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white.withOpacity(0.9)),
+          ),
+        );
+      }).toList(),
     );
   }
 }
