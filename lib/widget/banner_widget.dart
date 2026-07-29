@@ -12,8 +12,7 @@ class BannerWidget extends StatefulWidget {
 }
 
 class _BannerWidgetState extends State<BannerWidget> {
-  int _currentIndex = 0;
-  final CarouselController _controller = CarouselController();
+  final CarouselSliderController _controller = CarouselSliderController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +27,7 @@ class _BannerWidgetState extends State<BannerWidget> {
             autoPlay: true,
             viewportFraction: 1.0,
             onPageChanged: (index, reason) {
-              setState(() {
-                _currentIndex = index;
-              });
+              //
             },
           ),
         ),
