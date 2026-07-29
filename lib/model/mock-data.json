@@ -1,0 +1,222 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": {
+    "config": {
+      "searchUrl": "https://api.example.com/search"
+    },
+    "bannerList": [
+      { "icon": "", "url": "" },
+      { "icon": "", "url": "" },
+      { "icon": "", "url": "" },
+      { "icon": "", "url": "" }
+    ],
+    "localNavList": [
+      {
+        "icon": "icon1.png",
+        "title": "Local Nav 1",
+        "url": "",
+        "statusBarColor": "#ffffff",
+        "hideAppBar": false
+      },
+      {
+        "icon": "icon1.png",
+        "title": "Local Nav 1",
+        "url": "",
+        "statusBarColor": "#ffffff",
+        "hideAppBar": false
+      },
+      {
+        "icon": "icon1.png",
+        "title": "Local Nav 1",
+        "url": "",
+        "statusBarColor": "#ffffff",
+        "hideAppBar": false
+      },
+      {
+        "icon": "icon1.png",
+        "title": "Local Nav 1",
+        "url": "",
+        "statusBarColor": "#ffffff",
+        "hideAppBar": false
+      },
+      {
+        "icon": "icon1.png",
+        "title": "Local Nav 1",
+        "url": "",
+        "statusBarColor": "#ffffff",
+        "hideAppBar": false
+      }
+    ],
+    "gridNav": {
+      "hotel": {
+        "startColor": "#fa5956",
+        "endColor": "#fa9b4d",
+        "mainItem": {
+          "title": "Hotel",
+          "icon": "hotel.png",
+          "url": "",
+          "statusBarColor": "#ffffff"
+        },
+        "item1": {
+          "title": "Hotel 1",
+          "url": "",
+          "statusBarColor": "#ffffff",
+          "hideAppBar": false
+        },
+        "item2": {
+          "title": "Hotel 1",
+          "url": "",
+          "statusBarColor": "#ffffff",
+          "hideAppBar": false
+        },
+        "item3": {
+          "title": "Hotel 1",
+          "url": "",
+          "statusBarColor": "#ffffff",
+          "hideAppBar": false
+        },
+        "item4": {
+          "title": "Hotel 1",
+          "url": "",
+          "statusBarColor": "#ffffff",
+          "hideAppBar": false
+        }
+      },
+      "flight": {
+        "startColor": "#4e8ef7",
+        "endColor": "#4cc3f7",
+        "mainItem": {
+          "title": "Flight",
+          "icon": "flight.png",
+          "url": "",
+          "statusBarColor": "#ffffff"
+        },
+        "item1": {
+          "title": "Flight 1",
+          "url": "",
+          "statusBarColor": "#ffffff",
+          "hideAppBar": false
+        },
+        "item2": {
+          "title": "Flight 1",
+          "url": "",
+          "statusBarColor": "#ffffff",
+          "hideAppBar": false
+        },
+        "item3": {
+          "title": "Flight 1",
+          "url": "",
+          "statusBarColor": "#ffffff",
+          "hideAppBar": false
+        },
+        "item4": {
+          "title": "Flight 1",
+          "url": "",
+          "statusBarColor": "#ffffff",
+          "hideAppBar": false
+        }
+      },
+      "travel": {
+        "startColor": "#34c9c9",
+        "endColor": "#34c9c9",
+        "mainItem": {
+          "title": "Travel",
+          "icon": "travel.png",
+          "url": "",
+          "statusBarColor": "#ffffff"
+        },
+        "item1": {
+          "title": "Travel 1",
+          "url": "",
+          "statusBarColor": "#ffffff",
+          "hideAppBar": false
+        },
+        "item2": {
+          "title": "Travel 1",
+          "url": "",
+          "statusBarColor": "#ffffff",
+          "hideAppBar": false
+        },
+        "item3": {
+          "title": "Travel 1",
+          "url": "",
+          "statusBarColor": "#ffffff",
+          "hideAppBar": false
+        },
+        "item4": {
+          "title": "Travel 1",
+          "url": "",
+          "statusBarColor": "#ffffff",
+          "hideAppBar": false
+        }
+      }
+    },
+    "subNavList": [
+      {
+        "icon": "",
+        "title": "Sub Nav 1",
+        "url": "",
+        "hideAppBar": false
+      },
+      {
+        "icon": "",
+        "title": "Sub Nav 1",
+        "url": "",
+        "hideAppBar": false
+      },
+      {
+        "icon": "",
+        "title": "Sub Nav 1",
+        "url": "",
+        "hideAppBar": false
+      },
+      {
+        "icon": "",
+        "title": "Sub Nav 1",
+        "url": "",
+        "hideAppBar": false
+      },
+      {
+        "icon": "",
+        "title": "Sub Nav 1",
+        "url": "",
+        "hideAppBar": false
+      }
+    ],
+    "salesBox": {
+      "icon": "",
+      "moreUrl": "",
+      "bigCard1": {
+        "icon": "",
+        "url": "",
+        "title": ""
+      },
+      "bigCard2": {
+        "icon": "",
+        "url": "",
+        "title": ""
+      },
+      "smallCard1": {
+        "icon": "",
+        "url": "",
+        "title": ""
+      },
+      "smallCard2": {
+        "icon": "",
+        "url": "",
+        "title": ""
+      },
+      "smallCard3": {
+        "icon": "",
+        "url": "",
+        "title": ""
+      },
+      "smallCard4": {
+        "icon": "",
+        "url": "",
+        "title": ""
+      }
+    }
+  }
+}
