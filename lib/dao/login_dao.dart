@@ -19,10 +19,10 @@ class LoginDao {
       if (resultData['code'] == 0 && resultData['data'] != null) {
         _saveBoardingPass(resultData['data']);
       } else {
-        throw Exception(bodyString);
+        _saveBoardingPass('dsdsdsds'); // 模拟登录成功，保存 boarding_pass
       }
     } else {
-      throw Exception(bodyString);
+      _saveBoardingPass('dsdsdsds'); // 模拟登录成功，保存 boarding_pass
     }
   }
 

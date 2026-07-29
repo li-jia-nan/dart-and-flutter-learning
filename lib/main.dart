@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_app/dao/login_dao.dart';
-import 'package:learning_app/pages/home_page.dart';
-import 'pages/login_page.dart';
+import 'package:learning_app/navigator/tab_navigator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,9 +20,9 @@ class MyApp extends StatelessWidget {
         builder: (BuildContext context, AsyncSnapshot<String?> snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.data == null) {
-              return const LoginPage();
+              return const TabNavigator();
             } else {
-              return const HomePage();
+              return const TabNavigator();
             }
           } else {
             return const Scaffold(body: Center(child: CircularProgressIndicator()));
