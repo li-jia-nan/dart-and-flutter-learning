@@ -10,7 +10,7 @@ class LocalNavWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.fromLTRB(7, 4, 7, 4),
-      height: 64,
+      constraints: const BoxConstraints(minHeight: 64),
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(6)),
@@ -22,9 +22,9 @@ class LocalNavWidget extends StatelessWidget {
   Widget _items(BuildContext context) {
     List<Widget> items = [];
     for (var model in localNavList) {
-      items.add(_item(context, model));
+      items.add(Expanded(child: _item(context, model)));
     }
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: items);
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: items);
   }
 
   Widget _item(BuildContext context, LocalNavList model) {
@@ -33,10 +33,8 @@ class LocalNavWidget extends StatelessWidget {
         //
       },
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.network(model.icon!, width: 32, height: 32),
-          const SizedBox(height: 2),
           Text(model.title, style: const TextStyle(fontSize: 12)),
         ],
       ),

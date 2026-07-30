@@ -25,36 +25,36 @@
     ],
     "localNavList": [
       {
-        "icon": "icon1.png",
-        "title": "Local Nav 1",
+        "icon": "https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/72x72/1f3a1.png",
+        "title": "景点",
         "url": "https://you.ctrip.com/sight/",
         "statusBarColor": "#1976D2",
         "hideAppBar": false
       },
       {
-        "icon": "icon1.png",
-        "title": "Local Nav 1",
+        "icon": "https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/72x72/1f3e8.png",
+        "title": "周边游",
         "url": "https://hotels.ctrip.com/",
         "statusBarColor": "#00897B",
         "hideAppBar": false
       },
       {
-        "icon": "icon1.png",
-        "title": "Local Nav 1",
+        "icon": "https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/72x72/2708.png",
+        "title": "美食林",
         "url": "https://flights.ctrip.com/",
         "statusBarColor": "#7B1FA2",
         "hideAppBar": false
       },
       {
-        "icon": "icon1.png",
-        "title": "Local Nav 1",
+        "icon": "https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/72x72/1f686.png",
+        "title": "一日游",
         "url": "https://trains.ctrip.com/",
         "statusBarColor": "#F57C00",
         "hideAppBar": false
       },
       {
-        "icon": "icon1.png",
-        "title": "Local Nav 1",
+        "icon": "https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/72x72/1f9f3.png",
+        "title": "当地攻略",
         "url": "https://vacations.ctrip.com/",
         "statusBarColor": "#388E3C",
         "hideAppBar": false
