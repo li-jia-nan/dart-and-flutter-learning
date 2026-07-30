@@ -31,14 +31,20 @@ class GridNavWidget extends StatelessWidget {
     for (var item in items) {
       expandItems.add(Expanded(flex: 1, child: item));
     }
-    Color startColor = Color(int.parse('0xff${gridNavItem.startColor}'));
-    Color endColor = Color(int.parse('0xff${gridNavItem.endColor}'));
+    final startColor = _parseColor(gridNavItem.startColor);
+    final endColor = _parseColor(gridNavItem.endColor);
     return Container(
       height: 88,
       margin: isFirst ? null : const EdgeInsets.only(top: 3),
       decoration: BoxDecoration(gradient: LinearGradient(colors: [startColor, endColor])),
       child: Row(children: expandItems),
     );
+  }
+
+  Color _parseColor(String hexColor) {
+    final hex = hexColor.replaceFirst('#', '');
+    final colorValue = hex.length == 6 ? 'FF$hex' : hex;
+    return Color(int.parse(colorValue, radix: 16));
   }
 
   Widget _mainItem(BuildContext context, LocalNavList model) {
