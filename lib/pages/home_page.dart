@@ -3,6 +3,7 @@ import 'package:learning_app/dao/login_dao.dart';
 import 'package:learning_app/dao/home_dao.dart';
 import 'package:learning_app/model/home_model.dart';
 import 'package:learning_app/widget/banner_widget.dart';
+import 'package:learning_app/widget/grid_nav_widget.dart';
 import 'package:learning_app/widget/local_nav_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -46,6 +47,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
     children: [
       BannerWidget(bannerList: bannerList),
       LocalNavWidget(localNavList: localNavList),
+      if (gridNavModel != null) GridNavWidget(gridNavModel: gridNavModel!),
       _loginBtn,
       const SizedBox(height: 800, child: ListTile(title: Text('哈哈'))),
     ],
