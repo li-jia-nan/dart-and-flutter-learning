@@ -5,6 +5,7 @@ import 'package:learning_app/model/home_model.dart';
 import 'package:learning_app/widget/banner_widget.dart';
 import 'package:learning_app/widget/grid_nav_widget.dart';
 import 'package:learning_app/widget/local_nav_widget.dart';
+import 'package:learning_app/widget/sales_box_widget.dart';
 import 'package:learning_app/widget/sub_nav_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -50,6 +51,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
       LocalNavWidget(localNavList: localNavList),
       if (gridNavModel != null) GridNavWidget(gridNavModel: gridNavModel!),
       SubNavWidget(subNavList: subNavList),
+      if (salesBoxModel != null) SalesBoxWidget(salesBox: salesBoxModel!),
       _loginBtn,
       const SizedBox(height: 800, child: ListTile(title: Text('哈哈'))),
     ],
