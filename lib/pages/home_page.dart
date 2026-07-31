@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learning_app/dao/login_dao.dart';
 import 'package:learning_app/dao/home_dao.dart';
+import 'package:learning_app/loading_container.dart';
 import 'package:learning_app/model/home_model.dart';
 import 'package:learning_app/widget/banner_widget.dart';
 import 'package:learning_app/widget/grid_nav_widget.dart';
@@ -27,6 +28,8 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
   GridNav? gridNavModel;
   SalesBox? salesBoxModel;
 
+  bool _isLoading = true;
+
   Widget get _loginBtn => ElevatedButton(
     onPressed: () {
       LoginDao.logOut();
@@ -37,6 +40,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
   Widget get _appBar => Opacity(
     opacity: appBarAlpha,
     child: Container(
+      padding: const EdgeInsets.only(top: 20),
       height: 80,
       decoration: const BoxDecoration(color: Colors.white),
       child: const Center(
@@ -57,6 +61,25 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
     ],
   );
 
+  Widget get _containerView => MediaQuery.removePadding(
+    removeTop: true, // 移除顶部安全区
+    context: context,
+    child: RefreshIndicator(
+      color: Colors.blue,
+      onRefresh: _handleRefresh,
+      child: NotificationListener(
+        onNotification: (notification) {
+          if (notification is ScrollUpdateNotification && notification.depth == 0) {
+            // 通过 depth == 0 来判断是 ListView 滚动，而不是内部其他可滚动组件的滚动
+            _onScroll(notification.metrics.pixels);
+          }
+          return false;
+        },
+        child: _listView,
+      ),
+    ),
+  );
+
   @override
   void initState() {
     super.initState();
@@ -68,24 +91,10 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
     super.build(context);
     return Scaffold(
       backgroundColor: const Color(0xfff2f2f2),
-      body: Stack(
-        children: [
-          MediaQuery.removePadding(
-            removeTop: true, // 移除顶部安全区
-            context: context,
-            child: NotificationListener(
-              onNotification: (notification) {
-                if (notification is ScrollUpdateNotification && notification.depth == 0) {
-                  // 通过 depth == 0 来判断是 ListView 滚动，而不是内部其他可滚动组件的滚动
-                  _onScroll(notification.metrics.pixels);
-                }
-                return false;
-              },
-              child: _listView,
-            ),
-          ),
-          _appBar,
-        ],
+      body: LoadingContainer(
+        isLoading: _isLoading,
+        cover: true,
+        child: Stack(children: [_containerView, _appBar]),
       ),
     );
   }
@@ -120,9 +129,13 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
         gridNavModel = model?.gridNav;
         salesBoxModel = model?.salesBox;
         bannerList = model?.bannerList ?? [];
+        _isLoading = false;
       });
     } catch (e) {
       debugPrint(e.toString());
+      setState(() {
+        _isLoading = false;
+      });
     }
   }
 }
