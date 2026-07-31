@@ -5,6 +5,7 @@ import 'package:learning_app/model/home_model.dart';
 import 'package:learning_app/widget/banner_widget.dart';
 import 'package:learning_app/widget/grid_nav_widget.dart';
 import 'package:learning_app/widget/local_nav_widget.dart';
+import 'package:learning_app/widget/sub_nav_widget.dart';
 
 class HomePage extends StatefulWidget {
   static Config? configModel;
@@ -48,6 +49,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
       BannerWidget(bannerList: bannerList),
       LocalNavWidget(localNavList: localNavList),
       if (gridNavModel != null) GridNavWidget(gridNavModel: gridNavModel!),
+      SubNavWidget(subNavList: subNavList),
       _loginBtn,
       const SizedBox(height: 800, child: ListTile(title: Text('哈哈'))),
     ],
@@ -63,6 +65,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
+      backgroundColor: const Color(0xfff2f2f2),
       body: Stack(
         children: [
           MediaQuery.removePadding(
