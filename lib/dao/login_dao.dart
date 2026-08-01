@@ -1,11 +1,10 @@
-// 登录接口
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:learning_app/dao/header_util.dart';
 import 'package:learning_app/utils/navigator_util.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// 登录接口
 class LoginDao {
   static const boardingPass = 'boarding_pass';
   static Future<void> login({required String userName, required String password}) async {
