@@ -95,12 +95,63 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
             size: 20,
             color: widget.searchBarType == SearchBarType.normal ? Color(0xffa9a9a9) : Colors.blue,
           ),
-          Expanded(child: Container()),
-          // todo: 实现清除按钮
+          Expanded(child: _textField),
+          if (showClear)
+            _wrapTap(Icon(Icons.clear, size: 22, color: Colors.grey), () {
+              _controller.clear();
+              _onChanged('');
+            }),
         ],
       ),
     );
   }
+
+  Widget get _homeSearchBar => Row(
+    children: [
+      _wrapTap(
+        Container(
+          padding: EdgeInsets.fromLTRB(6, 5, 5, 5),
+          child: Row(
+            children: [
+              Text('北京', style: TextStyle(color: _homeFontColor)),
+              Icon(Icons.expand_more, size: 22, color: _homeFontColor),
+            ],
+          ),
+        ),
+        widget.leftButtonClick,
+      ),
+      Expanded(child: _inputBox),
+      _wrapTap(
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+          child: Text('登出', style: TextStyle(fontSize: 12, color: _homeFontColor)),
+        ),
+        widget.rightButtonClick,
+      ),
+    ],
+  );
+
+  Color get _homeFontColor =>
+      widget.searchBarType == SearchBarType.homeLight ? Colors.black54 : Colors.white;
+
+  // 输入框
+  Widget get _textField => widget.searchBarType == SearchBarType.normal
+      ? TextField(
+          controller: _controller,
+          onChanged: _onChanged,
+          autofocus: true,
+          style: const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w300),
+          decoration: InputDecoration(
+            contentPadding: const EdgeInsets.only(left: 5, right: 5, bottom: 15),
+            border: InputBorder.none,
+            hintText: widget.hintText ?? '请输入搜索内容',
+            hintStyle: const TextStyle(fontSize: 15),
+          ),
+        )
+      : _wrapTap(
+          Text(widget.defaultText ?? '', style: TextStyle(fontSize: 13, color: Colors.grey)),
+          widget.inputBoxClick,
+        );
 
   @override
   void initState() {
@@ -118,10 +169,25 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return _normalSearchBar;
+    return widget.searchBarType == SearchBarType.normal ? _normalSearchBar : _homeSearchBar;
   }
 
   Widget _wrapTap(Widget child, void Function()? callback) {
     return GestureDetector(onTap: callback, child: child);
+  }
+
+  void _onChanged(String value) {
+    if (value.isNotEmpty) {
+      setState(() {
+        showClear = true;
+      });
+    } else {
+      setState(() {
+        showClear = false;
+      });
+    }
+    if (widget.onChanged != null) {
+      widget.onChanged!(value);
+    }
   }
 }
