@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learning_app/widget/search_bar_widget.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -12,7 +13,7 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('搜索')),
-      body: Column(children: const [Text('搜索页面')]),
+      body: Column(children: [SearchBarWidget()]),
     );
   }
 }

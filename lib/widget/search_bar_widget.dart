@@ -60,6 +60,14 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
         widget.inputBoxClick,
       ),
       Expanded(child: _inputBox),
+      // 右侧搜索按钮
+      _wrapTap(
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+          child: const Text('搜索', style: TextStyle(fontSize: 17, color: Colors.blue)),
+        ),
+        widget.rightButtonClick,
+      ),
     ],
   );
 
