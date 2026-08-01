@@ -140,9 +140,11 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
           controller: _controller,
           onChanged: _onChanged,
           autofocus: true,
-          style: const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w300),
+          cursorColor: Colors.blue,
+          cursorHeight: 20,
+          style: const TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w300),
           decoration: InputDecoration(
-            contentPadding: const EdgeInsets.only(left: 5, right: 5, bottom: 15),
+            contentPadding: const EdgeInsets.only(left: 5, right: 5, bottom: 12),
             border: InputBorder.none,
             hintText: widget.hintText ?? '请输入搜索内容',
             hintStyle: const TextStyle(fontSize: 15),

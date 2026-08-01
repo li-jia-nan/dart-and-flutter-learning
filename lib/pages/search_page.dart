@@ -11,7 +11,7 @@ class SearchPage extends StatefulWidget {
   final String? keyword;
   final String? hint;
 
-  const SearchPage({super.key, this.hideLeft, this.keyword, this.hint});
+  const SearchPage({super.key, this.hideLeft = false, this.keyword, this.hint});
 
   @override
   State<SearchPage> createState() => _SearchPageState();
@@ -33,7 +33,7 @@ class _SearchPageState extends State<SearchPage> {
       child: Container(
         height: 55 + top,
         decoration: BoxDecoration(color: Colors.white),
-        padding: const EdgeInsets.only(bottom: 5),
+        padding: EdgeInsets.only(top: top),
         child: SearchBarWidget(
           hideLeft: widget.hideLeft,
           defaultText: widget.keyword,
@@ -73,16 +73,19 @@ class _SearchPageState extends State<SearchPage> {
       if (!mounted) {
         return;
       }
-      setState(() {
-        searchModel = result;
-      });
+      // 如果输入的值和返回的值不一致，说明用户又输入了新的值，这时就不需要再去更新 UI 了
+      if (value == result.keyword) {
+        setState(() {
+          searchModel = result;
+        });
+      }
     } catch (e) {
       //
     }
   }
 
   Widget _item(int index) {
-    SearchItem item = searchModel.data[index];
-    return Text(item.word);
+    SearchItem item = searchModel!.data[index];
+    return Text(json.encode(item));
   }
 }
