@@ -25,4 +25,11 @@ class NavigatorUtil {
       MaterialPageRoute(builder: (context) => const LoginPage()),
     );
   }
+
+  // 返回上一页
+  static void pop(BuildContext context) {
+    if (Navigator.canPop(context)) {
+      Navigator.pop(context);
+    }
+  }
 }
