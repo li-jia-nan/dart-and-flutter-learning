@@ -14,6 +14,11 @@ class _SearchPageState extends State<SearchPage> {
   String showText = '';
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey,
@@ -22,7 +27,7 @@ class _SearchPageState extends State<SearchPage> {
         children: [
           SearchBarWidget(
             hideLeft: true,
-            defaultText: '广州',
+            defaultText: '网红打卡地 景点 酒店 美食',
             hintText: '请输入搜索内容',
             leftButtonClick: () {
               Navigator.pop(context);
@@ -37,12 +42,20 @@ class _SearchPageState extends State<SearchPage> {
 
   void _onTextChanged(String value) async {
     try {
-      var result = await SearchDao.fetch(value);
+      final result = await SearchDao.fetch(value);
+      if (!mounted) {
+        return;
+      }
       setState(() {
         showText = jsonEncode(result);
       });
     } catch (e) {
-      //
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        showText = '搜索失败，请稍后重试';
+      });
     }
   }
 }

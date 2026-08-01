@@ -68,6 +68,7 @@ flutter:
   assets:
     - images/
     - lib/model/mock-data.json
+    - lib/model/search-data.json
 
   # To add assets to your application, add an assets section, like this:
   # assets:
