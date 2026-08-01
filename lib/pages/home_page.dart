@@ -3,11 +3,17 @@ import 'package:learning_app/dao/login_dao.dart';
 import 'package:learning_app/dao/home_dao.dart';
 import 'package:learning_app/loading_container.dart';
 import 'package:learning_app/model/home_model.dart';
+import 'package:learning_app/pages/search_page.dart';
+import 'package:learning_app/utils/navigator_util.dart';
+import 'package:learning_app/utils/view_util.dart';
 import 'package:learning_app/widget/banner_widget.dart';
 import 'package:learning_app/widget/grid_nav_widget.dart';
 import 'package:learning_app/widget/local_nav_widget.dart';
 import 'package:learning_app/widget/sales_box_widget.dart';
+import 'package:learning_app/widget/search_bar_widget.dart';
 import 'package:learning_app/widget/sub_nav_widget.dart';
+
+const String searchBarDefaultText = '网红打卡地 景点 酒店 美食';
 
 class HomePage extends StatefulWidget {
   static Config? configModel;
@@ -37,17 +43,27 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
     child: const Text('退出'),
   );
 
-  Widget get _appBar => Opacity(
-    opacity: appBarAlpha,
-    child: Container(
-      padding: const EdgeInsets.only(top: 20),
-      height: 80,
-      decoration: const BoxDecoration(color: Colors.white),
-      child: const Center(
-        child: Padding(padding: EdgeInsets.only(top: 20), child: Text('首页')),
-      ),
-    ),
-  );
+  Widget get _appBar {
+    // 获取刘海屏实际高度
+    double top = MediaQuery.of(context).padding.top;
+    return Column(
+      children: [
+        shadowWarp(
+          child: Container(
+            padding: EdgeInsets.only(top: top),
+            height: 60 + top,
+            decoration: BoxDecoration(color: Colors.white.withAlpha((appBarAlpha * 255).toInt())),
+            child: SearchBarWidget(
+              searchBarType: appBarAlpha > 0.2 ? SearchBarType.homeLight : SearchBarType.home,
+              inputBoxClick: _jumpToSearch,
+              defaultText: searchBarDefaultText,
+              rightButtonClick: LoginDao.logOut,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 
   Widget get _listView => ListView(
     children: [
@@ -137,5 +153,9 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
         _isLoading = false;
       });
     }
+  }
+
+  void _jumpToSearch() {
+    NavigatorUtil.push(context, SearchPage());
   }
 }
