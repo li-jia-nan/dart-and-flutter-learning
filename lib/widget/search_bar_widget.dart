@@ -113,7 +113,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
           padding: EdgeInsets.fromLTRB(6, 5, 5, 5),
           child: Row(
             children: [
-              Text('北京', style: TextStyle(color: _homeFontColor)),
+              Text('北京', style: TextStyle(color: _homeFontColor, fontSize: 20)),
               Icon(Icons.expand_more, size: 22, color: _homeFontColor),
             ],
           ),
@@ -124,7 +124,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
       _wrapTap(
         Padding(
           padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
-          child: Text('登出', style: TextStyle(fontSize: 12, color: _homeFontColor)),
+          child: Text('登出', style: TextStyle(fontSize: 18, color: _homeFontColor)),
         ),
         widget.rightButtonClick,
       ),
