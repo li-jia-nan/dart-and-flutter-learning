@@ -82,7 +82,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
       ),
       child: Row(
         children: [
-          const Icon(
+          Icon(
             Icons.search,
             size: 20,
             color: widget.searchBarType == SearchBarType.normal ? Color(0xffa9a9a9) : Colors.blue,
