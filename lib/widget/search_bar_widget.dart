@@ -59,11 +59,40 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
         Padding(padding: const EdgeInsets.fromLTRB(6, 5, 10, 5), child: _backBtn),
         widget.inputBoxClick,
       ),
+      Expanded(child: _inputBox),
     ],
   );
 
   Widget? get _backBtn =>
       widget.hideLeft ?? false ? null : Icon(Icons.arrow_back_ios, color: Colors.grey, size: 26);
+
+  Widget get _inputBox {
+    Color inputBoxColor;
+    if (widget.searchBarType == SearchBarType.home) {
+      inputBoxColor = Colors.white;
+    } else {
+      inputBoxColor = const Color(0xffededed);
+    }
+    return Container(
+      height: 30,
+      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+      decoration: BoxDecoration(
+        color: inputBoxColor,
+        borderRadius: BorderRadius.circular(widget.searchBarType == SearchBarType.normal ? 5 : 15),
+      ),
+      child: Row(
+        children: [
+          const Icon(
+            Icons.search,
+            size: 20,
+            color: widget.searchBarType == SearchBarType.normal ? Color(0xffa9a9a9) : Colors.blue,
+          ),
+          Expanded(child: Container()),
+          // todo: 实现清除按钮
+        ],
+      ),
+    );
+  }
 
   @override
   void initState() {
