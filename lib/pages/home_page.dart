@@ -146,13 +146,19 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
       if (!mounted) {
         return;
       }
+      if (model == null) {
+        setState(() {
+          _isLoading = false;
+        });
+        return;
+      }
       setState(() {
-        HomePage.configModel = model?.config;
-        localNavList = model?.localNavList ?? [];
-        subNavList = model?.subNavList ?? [];
-        gridNavModel = model?.gridNav;
-        salesBoxModel = model?.salesBox;
-        bannerList = model?.bannerList ?? [];
+        HomePage.configModel = model.config;
+        localNavList = model.localNavList;
+        subNavList = model.subNavList;
+        gridNavModel = model.gridNav;
+        salesBoxModel = model.salesBox;
+        bannerList = model.bannerList;
         _isLoading = false;
       });
     } catch (e) {
