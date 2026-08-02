@@ -11,6 +11,26 @@
       "star": "五星级",
       "districtName": "广东",
       "url": "https://you.ctrip.com/place/guangzhou152.html"
+    },
+    {
+      "code": "district_152",
+      "word": "广州",
+      "type": "district",
+      "price": "实时计价",
+      "zonename": "王府井",
+      "star": "五星级",
+      "districtName": "广东",
+      "url": "https://you.ctrip.com/place/guangzhou152.html"
+    },
+    {
+      "code": "district_152",
+      "word": "广州",
+      "type": "district",
+      "price": "实时计价",
+      "zonename": "王府井",
+      "star": "五星级",
+      "districtName": "广东",
+      "url": "https://you.ctrip.com/place/guangzhou152.html"
     }
   ]
 }

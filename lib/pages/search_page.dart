@@ -1,10 +1,10 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:learning_app/dao/search_dao.dart';
 import 'package:learning_app/model/search_model.dart';
 import 'package:learning_app/utils/navigator_util.dart';
 import 'package:learning_app/utils/view_util.dart';
 import 'package:learning_app/widget/search_bar_widget.dart';
+import 'package:learning_app/widget/search_item_widget.dart';
 
 class SearchPage extends StatefulWidget {
   final bool? hideLeft;
@@ -24,6 +24,9 @@ class _SearchPageState extends State<SearchPage> {
   @override
   void initState() {
     super.initState();
+    if (widget.keyword != null) {
+      _onTextChanged(widget.keyword!);
+    }
   }
 
   Widget get _appBar {
@@ -39,6 +42,10 @@ class _SearchPageState extends State<SearchPage> {
           defaultText: widget.keyword,
           hintText: widget.hint,
           leftButtonClick: () => NavigatorUtil.pop(context),
+          rightButtonClick: () {
+            // 收起键盘
+            FocusScope.of(context).requestFocus(FocusNode());
+          },
           onChanged: _onTextChanged,
         ),
       ),
@@ -48,7 +55,7 @@ class _SearchPageState extends State<SearchPage> {
 
   Widget get _listView => MediaQuery.removePadding(
     context: context,
-    // removeTop: true,
+    removeTop: true,
     child: Expanded(
       child: ListView.builder(
         itemCount: searchModel?.data.length ?? 0,
@@ -85,7 +92,10 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Widget _item(int index) {
-    SearchItem item = searchModel!.data[index];
-    return Text(json.encode(item));
+    SearchItem? item = searchModel!.data[index];
+    // if (item == null) {
+    //   return Container();
+    // }
+    return SearchItemWidget(searchItem: item);
   }
 }
