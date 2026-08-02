@@ -6,7 +6,7 @@ import 'package:learning_app/model/home_model.dart';
 import 'package:learning_app/utils/navigator_util.dart';
 
 class HomeDao {
-  static const String _mockDataAsset = 'lib/model/mock-data.json';
+  static const String _mockDataAsset = 'lib/model/home-data.json';
 
   static Future<Data?> fetch() async {
     var url = Uri.parse('https://jsonplaceholder.typicode.com/posts/1');

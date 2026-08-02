@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_app/dao/travel_dao.dart';
-import 'package:learning_app/model/travel-category-model.dart';
+import 'package:learning_app/model/travel_category_model.dart';
 
 class TravelPage extends StatefulWidget {
   const TravelPage({super.key});

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:learning_app/dao/header_util.dart';
-import 'package:learning_app/model/travel-category-model.dart';
+import 'package:learning_app/model/travel_category_model.dart';
 import 'package:learning_app/utils/navigator_util.dart';
 
 class TravelDao {
