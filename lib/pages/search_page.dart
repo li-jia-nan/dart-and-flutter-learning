@@ -96,6 +96,6 @@ class _SearchPageState extends State<SearchPage> {
     // if (item == null) {
     //   return Container();
     // }
-    return SearchItemWidget(searchItem: item);
+    return SearchItemWidget(searchItem: item, searchModel: searchModel!);
   }
 }

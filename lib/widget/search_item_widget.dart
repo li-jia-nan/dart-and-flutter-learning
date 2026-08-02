@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:learning_app/model/search_model.dart';
 
 class SearchItemWidget extends StatelessWidget {
+  final SearchModel searchModel;
   final SearchItem searchItem;
-  const SearchItemWidget({super.key, required this.searchItem});
+  const SearchItemWidget({super.key, required this.searchItem, required this.searchModel});
 
   Widget get _item => Container(
     padding: const EdgeInsets.all(10),
@@ -12,8 +13,7 @@ class SearchItemWidget extends StatelessWidget {
     ),
     child: Row(
       children: [
-        // 左侧图片
-        // Image.network(searchItem.url, width: 100, height: 80, fit: BoxFit.cover),
+        _iconContainer,
         Column(
           children: [
             SizedBox(width: 300, child: _title),
@@ -24,12 +24,17 @@ class SearchItemWidget extends StatelessWidget {
     ),
   );
 
-  Widget get _title => Text(
-    searchItem.word,
-    maxLines: 1,
-    overflow: TextOverflow.ellipsis,
-    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-  );
+  Widget get _title {
+    List<TextSpan> spans = [];
+    spans.addAll(_keywordTextSpans(searchItem.word, searchModel.keyword ?? ''));
+    spans.add(
+      TextSpan(
+        text: ' ${searchItem.districtName} ${searchItem.zonename}',
+        style: const TextStyle(fontSize: 16, color: Colors.grey),
+      ),
+    );
+    return RichText(text: TextSpan(children: spans));
+  }
 
   Widget get _subTitle => RichText(
     text: TextSpan(
@@ -45,6 +50,55 @@ class SearchItemWidget extends StatelessWidget {
       ],
     ),
   );
+
+  Widget get _iconContainer => Container(
+    margin: const EdgeInsets.all(1),
+    child: Image(image: AssetImage(_typeImage(searchItem.type)), width: 26, height: 26),
+  );
+
+  String _typeImage(String? type) {
+    if (type == null || type.isEmpty) {
+      return '';
+    }
+    if (type == 'a') {
+      return 'images/type_a.webp';
+    }
+    if (type == 'b') {
+      return 'images/type_b.webp';
+    }
+    if (type == 'c') {
+      return 'images/type_c.webp';
+    }
+    return '';
+  }
+
+  // 高亮处理
+  List<TextSpan> _keywordTextSpans(String? word, String keyword) {
+    List<TextSpan> spans = [];
+    if (word == null || word.isEmpty) {
+      return spans;
+    }
+    String wordL = word.toLowerCase();
+    String keywordL = keyword.toLowerCase();
+    TextStyle normalStyle = const TextStyle(fontSize: 16, color: Colors.black87);
+    TextStyle keywordStyle = const TextStyle(fontSize: 16, color: Colors.orange);
+
+    List<String> arr = wordL.split(keywordL);
+    int preIndex = 0;
+    for (int i = 0; i < arr.length; i++) {
+      if (i != 0) {
+        preIndex = wordL.indexOf(keywordL, preIndex);
+        spans.add(
+          TextSpan(text: word.substring(preIndex, preIndex + keywordL.length), style: keywordStyle),
+        );
+      }
+      String val = arr[i];
+      if (val.isNotEmpty) {
+        spans.add(TextSpan(text: val, style: normalStyle));
+      }
+    }
+    return spans;
+  }
 
   @override
   Widget build(BuildContext context) {

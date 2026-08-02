@@ -5,7 +5,7 @@
     {
       "code": "district_152",
       "word": "广州",
-      "type": "district",
+      "type": "a",
       "price": "实时计价",
       "zonename": "王府井",
       "star": "五星级",
@@ -15,7 +15,7 @@
     {
       "code": "district_152",
       "word": "广州",
-      "type": "district",
+      "type": "b",
       "price": "实时计价",
       "zonename": "王府井",
       "star": "五星级",
@@ -25,7 +25,7 @@
     {
       "code": "district_152",
       "word": "广州",
-      "type": "district",
+      "type": "c",
       "price": "实时计价",
       "zonename": "王府井",
       "star": "五星级",
