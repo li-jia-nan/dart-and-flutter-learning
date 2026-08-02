@@ -18,16 +18,15 @@ class _TravelPageState extends State<TravelPage> {
   @override
   void initState() {
     super.initState();
-    TravelDao.getCategory()
-        .then((TravelCategoryModel? model) {
-          setState(() {
-            tabs = model?.data.tabs ?? [];
-            travelTabModel = model;
-          });
-        })
-        .catchError((e) {
-          debugPrint('获取旅拍类别列表失败: $e');
-        });
+    TravelDao.getCategory().then((TravelCategoryModel? model) {
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        tabs = model?.data.tabs ?? [];
+        travelTabModel = model;
+      });
+    });
   }
 
   @override
