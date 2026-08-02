@@ -1,0 +1,36 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": {
+    "tabs": [
+      {
+        "labelName": "发现",
+        "groupChannelCode": "discover"
+      },
+      {
+        "labelName": "玩乐",
+        "groupChannelCode": "ssss"
+      },
+      {
+        "labelName": "酒店",
+        "groupChannelCode": "hotel"
+      },
+      {
+        "labelName": "美食",
+        "groupChannelCode": "food"
+      },
+      {
+        "labelName": "亲子",
+        "groupChannelCode": "family"
+      },
+      {
+        "labelName": "网红",
+        "groupChannelCode": "popular"
+      },
+      {
+        "labelName": "拍照行为",
+        "groupChannelCode": "tab-photo"
+      }
+    ]
+  }
+}
