@@ -79,13 +79,49 @@ class TravelItemWidget extends StatelessWidget {
 
   Widget _itemImage(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return Container(
-      constraints: BoxConstraints(minHeight: size.height / 2 - 10),
-      child: FadeInImage.memoryNetwork(
-        placeholder: kTransparentImage,
-        image: item.article.images[0].dynamicUrl,
-        fit: BoxFit.cover,
-      ),
+    return Stack(
+      children: [
+        Container(
+          constraints: BoxConstraints(minHeight: size.height / 2 - 10),
+          child: FadeInImage.memoryNetwork(
+            placeholder: kTransparentImage,
+            image: item.article.images[0].dynamicUrl,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Positioned(
+          left: 8,
+          bottom: 8,
+          child: Container(
+            padding: const EdgeInsets.fromLTRB(5, 1, 5, 1),
+            decoration: BoxDecoration(
+              color: Colors.black54,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 3),
+                  child: Icon(Icons.location_on, size: 12, color: Colors.white),
+                ),
+                LimitedBox(
+                  maxWidth: 130,
+                  child: Text(
+                    _poiName(),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontSize: 12, color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
+  }
+
+  String _poiName() {
+    return '未知';
   }
 }
