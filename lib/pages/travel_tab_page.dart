@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:learning_app/dao/travel_dao.dart';
+import 'package:learning_app/loading_container.dart';
 import 'package:learning_app/model/travel_tab_model.dart';
 import 'package:learning_app/widget/travel_item_widget.dart';
 
@@ -13,7 +14,7 @@ class TravelTabPage extends StatefulWidget {
   State<TravelTabPage> createState() => _TravelTabPageState();
 }
 
-class _TravelTabPageState extends State<TravelTabPage> {
+class _TravelTabPageState extends State<TravelTabPage> with AutomaticKeepAliveClientMixin {
   List<TravelItem> travelItems = [];
   int pageIndex = 1;
   bool isLoading = true;
@@ -32,6 +33,15 @@ class _TravelTabPageState extends State<TravelTabPage> {
   void initState() {
     super.initState();
     _loadData();
+    _scrollController.addListener(() {
+      if (!_scrollController.hasClients) {
+        return;
+      }
+      if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent) {
+        // 到达底部，加载更多数据
+        _loadData(loadMore: true);
+      }
+    });
   }
 
   @override
@@ -42,15 +52,32 @@ class _TravelTabPageState extends State<TravelTabPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: _gridView);
+    return Scaffold(
+      body: LoadingContainer(
+        isLoading: isLoading,
+        child: RefreshIndicator(
+          color: Colors.blue,
+          onRefresh: _loadData,
+          child: MediaQuery.removePadding(removeTop: true, context: context, child: _gridView),
+        ),
+      ),
+    );
   }
 
   Future<void> _loadData({bool loadMore = false}) async {
+    if (loadMore) {
+      pageIndex++;
+    } else {
+      pageIndex = 1;
+    }
     try {
-      final model = await TravelDao.getTravels(widget.groupChannelCode, pageIndex, 10);
+      TravelTabModel? model = await TravelDao.getTravels(widget.groupChannelCode, pageIndex, 10);
       final items = _filterItems(model?.data.list ?? []);
       if (!mounted) {
         return;
+      }
+      if (loadMore && items.isEmpty) {
+        pageIndex--;
       }
       setState(() {
         if (loadMore) {
@@ -64,6 +91,7 @@ class _TravelTabPageState extends State<TravelTabPage> {
       if (!mounted) {
         return;
       }
+      pageIndex--;
       setState(() {
         isLoading = false;
       });
@@ -82,4 +110,7 @@ class _TravelTabPageState extends State<TravelTabPage> {
     }
     return filterItems;
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

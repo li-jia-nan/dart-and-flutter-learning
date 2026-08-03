@@ -66,7 +66,6 @@ class _RefreshLoadmorePageState extends State<RefreshLoadmorePage> {
       }
       if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
         // 到达底部，加载更多数据
-        debugPrint('到达底部，加载更多数据');
         _loadMoreData();
       }
     });
