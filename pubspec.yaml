@@ -69,6 +69,7 @@ flutter:
     - lib/model/home-data.json
     - lib/model/search-data.json
     - lib/model/travel-category-data.json
+    - lib/model/travel-tab-data.json
 
   # To add assets to your application, add an assets section, like this:
   # assets:
