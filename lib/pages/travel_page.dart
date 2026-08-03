@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learning_app/dao/travel_dao.dart';
 import 'package:learning_app/model/travel_category_model.dart';
+import 'package:learning_app/pages/travel_tab_page.dart';
 
 class TravelPage extends StatefulWidget {
   const TravelPage({super.key});
@@ -12,7 +13,7 @@ class TravelPage extends StatefulWidget {
 class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
   List<TravelTab> tabs = [];
   TravelCategoryModel? travelTabModel;
-  late TabController? _tabController;
+  late TabController _tabController;
 
   Widget get _tabBar => TabBar(
     controller: _tabController,
@@ -31,21 +32,24 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
     super.initState();
     _tabController = TabController(length: tabs.length, vsync: this);
     TravelDao.getCategory().then((TravelCategoryModel? model) {
-      _tabController = TabController(length: model?.data.tabs.length ?? 0, vsync: this);
       if (!mounted) {
         return;
       }
+      final newTabs = model?.data.tabs ?? [];
+      final previousController = _tabController;
       setState(() {
-        tabs = model?.data.tabs ?? [];
+        tabs = newTabs;
         travelTabModel = model;
+        _tabController = TabController(length: tabs.length, vsync: this);
       });
+      previousController.dispose();
     });
   }
 
   @override
   void dispose() {
+    _tabController.dispose();
     super.dispose();
-    _tabController?.dispose();
   }
 
   @override
@@ -58,6 +62,14 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
             color: Colors.white,
             padding: EdgeInsets.only(top: top),
             child: _tabBar,
+          ),
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: tabs.map((tab) {
+                return TravelTabPage(groupChannelCode: tab.groupChannelCode);
+              }).toList(),
+            ),
           ),
         ],
       ),

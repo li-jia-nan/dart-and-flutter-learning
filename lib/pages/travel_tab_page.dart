@@ -20,8 +20,13 @@ class _TravelTabPageState extends State<TravelTabPage> {
 
   @override
   void initState() {
-    _loadData();
     super.initState();
+    _loadData();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -29,10 +34,13 @@ class _TravelTabPageState extends State<TravelTabPage> {
     return Scaffold(body: Column(children: [Text('travelItems: ${jsonEncode(travelItems)}')]));
   }
 
-  void _loadData({bool loadMore = false}) {
+  void _loadData({bool loadMore = false}) async {
     TravelDao.getTravels(widget.groupChannelCode, pageIndex, 10)
         .then((model) {
           List<TravelItem> items = _filterItems(model?.data.list ?? []);
+          if (!mounted) {
+            return;
+          }
           setState(() {
             if (loadMore) {
               travelItems.addAll(items);
@@ -43,6 +51,9 @@ class _TravelTabPageState extends State<TravelTabPage> {
           });
         })
         .catchError((e) {
+          if (!mounted) {
+            return;
+          }
           setState(() {
             isLoading = false;
           });

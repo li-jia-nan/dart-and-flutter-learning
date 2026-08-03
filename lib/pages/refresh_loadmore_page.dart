@@ -59,6 +59,7 @@ class _RefreshLoadmorePageState extends State<RefreshLoadmorePage> {
 
   @override
   void initState() {
+    super.initState();
     _scrollController.addListener(() {
       if (!_scrollController.hasClients) {
         return;
@@ -69,7 +70,6 @@ class _RefreshLoadmorePageState extends State<RefreshLoadmorePage> {
         _loadMoreData();
       }
     });
-    super.initState();
   }
 
   @override
