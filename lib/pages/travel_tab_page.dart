@@ -52,6 +52,7 @@ class _TravelTabPageState extends State<TravelTabPage> with AutomaticKeepAliveCl
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: LoadingContainer(
         isLoading: isLoading,
