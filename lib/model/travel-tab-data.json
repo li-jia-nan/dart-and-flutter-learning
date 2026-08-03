@@ -1,5 +1,11 @@
 {
   "code": 0,
   "message": "success",
-  "data": {}
+  "data": {
+    "list": [
+      {
+        "article": "article"
+      }
+    ]
+  }
 }

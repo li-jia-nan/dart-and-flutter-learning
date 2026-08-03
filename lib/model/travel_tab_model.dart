@@ -15,24 +15,22 @@ class TravelTabModel {
 }
 
 class Data {
-  final List<TravelTab> tabs;
+  final List<TravelItem> list;
 
-  Data({required this.tabs});
+  Data({required this.list});
 
   factory Data.fromJson(Map<String, dynamic> json) =>
-      Data(tabs: List<TravelTab>.from(json["tabs"].map((x) => TravelTab.fromJson(x))));
+      Data(list: List<TravelItem>.from(json["list"].map((x) => TravelItem.fromJson(x))));
 
-  Map<String, dynamic> toJson() => {"tabs": List<dynamic>.from(tabs.map((x) => x.toJson()))};
+  Map<String, dynamic> toJson() => {"list": List<dynamic>.from(list.map((x) => x.toJson()))};
 }
 
-class TravelTab {
-  final String labelName;
-  final String groupChannelCode;
+class TravelItem {
+  final String article;
 
-  TravelTab({required this.labelName, required this.groupChannelCode});
+  TravelItem({required this.article});
 
-  factory TravelTab.fromJson(Map<String, dynamic> json) =>
-      TravelTab(labelName: json["labelName"], groupChannelCode: json["groupChannelCode"]);
+  factory TravelItem.fromJson(Map<String, dynamic> json) => TravelItem(article: json["article"]);
 
-  Map<String, dynamic> toJson() => {"labelName": labelName, "groupChannelCode": groupChannelCode};
+  Map<String, dynamic> toJson() => {"article": article};
 }
