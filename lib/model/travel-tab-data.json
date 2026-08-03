@@ -4,7 +4,289 @@
   "data": {
     "list": [
       {
-        "article": "article"
+        "type": 1,
+        "article": {
+          "articleId": 23203354,
+          "productType": 5,
+          "sourceType": null,
+          "articleTitle": "活着，就是一场又一场的竞争，与协作。格局要大，所以要团结。",
+          "content": "#躺进万水千山里 #清新惬意 #出境游好地方 #新开景点大搜罗",
+          "contentWithoutCtag": null,
+          "author": {
+            "authorId": null,
+            "nickName": "丑丫看世界",
+            "clientAuth": "235D28542F60E9C988E5B91CB3A68533",
+            "userUrl": "https://m.ctrip.com/webapp/you/tripshoot/user/home?seo=0&clientAuth=235D28542F60E9C988E5B91CB3A68533&isHideHeader=true&isHideNavBar=YES",
+            "jumpUrl": "https://m.ctrip.com/webapp/you/tripshoot/user/home?seo=0&clientAuth=235D28542F60E9C988E5B91CB3A68533&isHideHeader=true&isHideNavBar=YES",
+            "coverImage": {
+              "dynamicUrl": "https://dimg04.c-ctrip.com/images/0Z83z12000akjd1cv255F_C_180_180.jpg",
+              "originalUrl": null
+            },
+            "qualification": null,
+            "tag": null,
+            "followCount": null,
+            "vIcon": "https://dimg04.c-ctrip.com/images/0104h1200082xud8qB94B.png",
+            "levelValue": null,
+            "levelValueText": null,
+            "identityDesc": "",
+            "isStarAccount": false
+          },
+          "images": [
+            {
+              "imageId": 923614971,
+              "dynamicUrl": "https://dimg04.c-ctrip.com/images/1me0p12000bxb3pfs3757_R_640_10000_Q90.jpg?proc=source/tripcommunity",
+              "originalUrl": "https://dimg04.c-ctrip.com/images/1me0p12000bxb3pfs3757.jpg?proc=source/tripcommunity",
+              "width": 1920.0,
+              "height": 1080.0,
+              "mediaType": null,
+              "lat": null,
+              "lon": null,
+              "isWaterMarked": null
+            }
+          ],
+          "hasVideo": true,
+          "video": {
+            "videoId": 4855937,
+            "coverImageUrl": "https://dimg04.c-ctrip.com/images/1me0p12000bxb3pfs3757_R_640_10000_Q90.jpg?proc=source/tripcommunity",
+            "videoUrl": "https://video.c-ctrip.com/videos/1A0ucn1a0gvekkrrkE024.mp4?ts=1692175526039",
+            "mediaType": null,
+            "width": 858.0,
+            "height": 480.0,
+            "durationSeconds": 32
+          },
+          "readCount": null,
+          "likeCount": 17,
+          "commentCount": 0,
+          "shareCount": null
+        }
+      },
+      {
+        "type": 1,
+        "article": {
+          "articleId": 23203355,
+          "productType": 5,
+          "sourceType": null,
+          "articleTitle": "清晨爬上山顶，遇见云海与第一缕阳光。",
+          "content": "#山野徒步 #追日出 #周末去哪里",
+          "contentWithoutCtag": null,
+          "author": {
+            "authorId": null,
+            "nickName": "山野旅人",
+            "clientAuth": "A1B2C3D4E5F60718293A4B5C6D7E8F90",
+            "userUrl": "https://example.com/users/mock-traveler-1",
+            "jumpUrl": "https://example.com/users/mock-traveler-1",
+            "coverImage": {
+              "dynamicUrl": "https://i.pravatar.cc/180?img=12",
+              "originalUrl": null
+            },
+            "qualification": null,
+            "tag": null,
+            "followCount": null,
+            "vIcon": "https://dimg04.c-ctrip.com/images/0104h1200082xud8qB94B.png",
+            "levelValue": null,
+            "levelValueText": null,
+            "identityDesc": "",
+            "isStarAccount": false
+          },
+          "images": [
+            {
+              "imageId": 923614972,
+              "dynamicUrl": "https://picsum.photos/id/1018/1920/1080",
+              "originalUrl": "https://picsum.photos/id/1018/1920/1080",
+              "width": 1920.0,
+              "height": 1080.0,
+              "mediaType": null,
+              "lat": null,
+              "lon": null,
+              "isWaterMarked": null
+            }
+          ],
+          "hasVideo": true,
+          "video": {
+            "videoId": 4855938,
+            "coverImageUrl": "https://picsum.photos/id/1018/1920/1080",
+            "videoUrl": "https://video.c-ctrip.com/videos/1A0ucn1a0gvekkrrkE024.mp4?ts=1692175526039",
+            "mediaType": null,
+            "width": 858.0,
+            "height": 480.0,
+            "durationSeconds": 32
+          },
+          "readCount": 128,
+          "likeCount": 26,
+          "commentCount": 4,
+          "shareCount": 2
+        }
+      },
+      {
+        "type": 1,
+        "article": {
+          "articleId": 23203356,
+          "productType": 5,
+          "sourceType": null,
+          "articleTitle": "沿着海岸线散步，把夏天的晚霞装进口袋。",
+          "content": "#海边日落 #夏日旅行 #治愈风景",
+          "contentWithoutCtag": null,
+          "author": {
+            "authorId": null,
+            "nickName": "海风日记",
+            "clientAuth": "B2C3D4E5F60718293A4B5C6D7E8F901A",
+            "userUrl": "https://example.com/users/mock-traveler-2",
+            "jumpUrl": "https://example.com/users/mock-traveler-2",
+            "coverImage": {
+              "dynamicUrl": "https://i.pravatar.cc/180?img=32",
+              "originalUrl": null
+            },
+            "qualification": null,
+            "tag": null,
+            "followCount": null,
+            "vIcon": "https://dimg04.c-ctrip.com/images/0104h1200082xud8qB94B.png",
+            "levelValue": null,
+            "levelValueText": null,
+            "identityDesc": "",
+            "isStarAccount": false
+          },
+          "images": [
+            {
+              "imageId": 923614973,
+              "dynamicUrl": "https://picsum.photos/id/1015/1920/1080",
+              "originalUrl": "https://picsum.photos/id/1015/1920/1080",
+              "width": 1920.0,
+              "height": 1080.0,
+              "mediaType": null,
+              "lat": null,
+              "lon": null,
+              "isWaterMarked": null
+            }
+          ],
+          "hasVideo": true,
+          "video": {
+            "videoId": 4855939,
+            "coverImageUrl": "https://picsum.photos/id/1015/1920/1080",
+            "videoUrl": "https://video.c-ctrip.com/videos/1A0ucn1a0gvekkrrkE024.mp4?ts=1692175526039",
+            "mediaType": null,
+            "width": 858.0,
+            "height": 480.0,
+            "durationSeconds": 32
+          },
+          "readCount": 356,
+          "likeCount": 48,
+          "commentCount": 7,
+          "shareCount": 5
+        }
+      },
+      {
+        "type": 1,
+        "article": {
+          "articleId": 23203357,
+          "productType": 5,
+          "sourceType": null,
+          "articleTitle": "在古城的小巷里慢慢走，听一段旧时光的故事。",
+          "content": "#古城漫步 #人文旅行 #城市记忆",
+          "contentWithoutCtag": null,
+          "author": {
+            "authorId": null,
+            "nickName": "城市漫步者",
+            "clientAuth": "C3D4E5F60718293A4B5C6D7E8F901A2B",
+            "userUrl": "https://example.com/users/mock-traveler-3",
+            "jumpUrl": "https://example.com/users/mock-traveler-3",
+            "coverImage": {
+              "dynamicUrl": "https://i.pravatar.cc/180?img=45",
+              "originalUrl": null
+            },
+            "qualification": null,
+            "tag": null,
+            "followCount": null,
+            "vIcon": "https://dimg04.c-ctrip.com/images/0104h1200082xud8qB94B.png",
+            "levelValue": null,
+            "levelValueText": null,
+            "identityDesc": "",
+            "isStarAccount": false
+          },
+          "images": [
+            {
+              "imageId": 923614974,
+              "dynamicUrl": "https://picsum.photos/id/1039/1920/1080",
+              "originalUrl": "https://picsum.photos/id/1039/1920/1080",
+              "width": 1920.0,
+              "height": 1080.0,
+              "mediaType": null,
+              "lat": null,
+              "lon": null,
+              "isWaterMarked": null
+            }
+          ],
+          "hasVideo": true,
+          "video": {
+            "videoId": 4855940,
+            "coverImageUrl": "https://picsum.photos/id/1039/1920/1080",
+            "videoUrl": "https://video.c-ctrip.com/videos/1A0ucn1a0gvekkrrkE024.mp4?ts=1692175526039",
+            "mediaType": null,
+            "width": 858.0,
+            "height": 480.0,
+            "durationSeconds": 32
+          },
+          "readCount": 219,
+          "likeCount": 31,
+          "commentCount": 3,
+          "shareCount": 1
+        }
+      },
+      {
+        "type": 1,
+        "article": {
+          "articleId": 23203358,
+          "productType": 5,
+          "sourceType": null,
+          "articleTitle": "雨后的森林格外清新，连呼吸都变得轻盈。",
+          "content": "#森林徒步 #雨后清新 #自然治愈",
+          "contentWithoutCtag": null,
+          "author": {
+            "authorId": null,
+            "nickName": "小林去远方",
+            "clientAuth": "D4E5F60718293A4B5C6D7E8F901A2B3C",
+            "userUrl": "https://example.com/users/mock-traveler-4",
+            "jumpUrl": "https://example.com/users/mock-traveler-4",
+            "coverImage": {
+              "dynamicUrl": "https://i.pravatar.cc/180?img=56",
+              "originalUrl": null
+            },
+            "qualification": null,
+            "tag": null,
+            "followCount": null,
+            "vIcon": "https://dimg04.c-ctrip.com/images/0104h1200082xud8qB94B.png",
+            "levelValue": null,
+            "levelValueText": null,
+            "identityDesc": "",
+            "isStarAccount": false
+          },
+          "images": [
+            {
+              "imageId": 923614975,
+              "dynamicUrl": "https://picsum.photos/id/1043/1920/1080",
+              "originalUrl": "https://picsum.photos/id/1043/1920/1080",
+              "width": 1920.0,
+              "height": 1080.0,
+              "mediaType": null,
+              "lat": null,
+              "lon": null,
+              "isWaterMarked": null
+            }
+          ],
+          "hasVideo": true,
+          "video": {
+            "videoId": 4855941,
+            "coverImageUrl": "https://picsum.photos/id/1043/1920/1080",
+            "videoUrl": "https://video.c-ctrip.com/videos/1A0ucn1a0gvekkrrkE024.mp4?ts=1692175526039",
+            "mediaType": null,
+            "width": 858.0,
+            "height": 480.0,
+            "durationSeconds": 32
+          },
+          "readCount": 442,
+          "likeCount": 63,
+          "commentCount": 9,
+          "shareCount": 6
+        }
       }
     ]
   }

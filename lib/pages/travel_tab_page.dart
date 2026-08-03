@@ -31,7 +31,7 @@ class _TravelTabPageState extends State<TravelTabPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Column(children: [Text('travelItems: ${jsonEncode(travelItems)}')]));
+    return Scaffold(body: ListView(children: [Text('travelItems: ${jsonEncode(travelItems)}')]));
   }
 
   void _loadData({bool loadMore = false}) async {
@@ -66,7 +66,7 @@ class _TravelTabPageState extends State<TravelTabPage> {
     }
     List<TravelItem> filterItems = [];
     for (var item in list) {
-      if (item.article.isNotEmpty) {
+      if (item.article.articleId != null) {
         filterItems.add(item);
       }
     }
