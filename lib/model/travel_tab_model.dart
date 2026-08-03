@@ -38,7 +38,7 @@ class TravelItem {
 }
 
 class Article {
-  final int articleId;
+  final int? articleId;
   final int productType;
   final dynamic sourceType;
   final String articleTitle;
@@ -212,8 +212,8 @@ class Image {
     imageId: json["imageId"],
     dynamicUrl: json["dynamicUrl"],
     originalUrl: json["originalUrl"],
-    width: json["width"],
-    height: json["height"],
+    width: (json["width"] as num).toInt(),
+    height: (json["height"] as num).toInt(),
     mediaType: json["mediaType"],
     lat: json["lat"],
     lon: json["lon"],
@@ -257,8 +257,8 @@ class Video {
     coverImageUrl: json["coverImageUrl"],
     videoUrl: json["videoUrl"],
     mediaType: json["mediaType"],
-    width: json["width"],
-    height: json["height"],
+    width: (json["width"] as num).toInt(),
+    height: (json["height"] as num).toInt(),
     durationSeconds: json["durationSeconds"],
   );
 

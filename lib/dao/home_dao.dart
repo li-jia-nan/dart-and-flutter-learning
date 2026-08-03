@@ -10,7 +10,7 @@ class HomeDao {
 
   static Future<Data?> fetch() async {
     var url = Uri.parse('https://jsonplaceholder.typicode.com/posts/1');
-    final response = await http.get(url, headers: hiHeaders());
+    final response = await http.get(url, headers: await hiHeaders());
     Utf8Decoder utf8Decoder = const Utf8Decoder();
     String responseBody = utf8Decoder.convert(response.bodyBytes);
     if (response.statusCode == 401) {

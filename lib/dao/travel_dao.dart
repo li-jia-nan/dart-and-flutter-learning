@@ -14,7 +14,7 @@ class TravelDao {
   // 获取旅拍类别
   static Future<TravelCategoryModel?> getCategory() async {
     var url = Uri.parse('https://api.devio.org/uapi/travel/list');
-    final response = await http.get(url, headers: hiHeaders());
+    final response = await http.get(url, headers: await hiHeaders());
     Utf8Decoder utf8Decoder = const Utf8Decoder();
     String responseBody = utf8Decoder.convert(response.bodyBytes);
     if (response.statusCode == 401) {
@@ -46,7 +46,7 @@ class TravelDao {
       'groupChannelCode': groupChannelCode,
     };
     var url = Uri.https('api.devio.org', '/uapi/travel/list', paramsMap);
-    final response = await http.get(url, headers: hiHeaders());
+    final response = await http.get(url, headers: await hiHeaders());
     Utf8Decoder utf8Decoder = const Utf8Decoder();
     String responseBody = utf8Decoder.convert(response.bodyBytes);
     if (response.statusCode == 401) {

@@ -34,30 +34,29 @@ class _TravelTabPageState extends State<TravelTabPage> {
     return Scaffold(body: ListView(children: [Text('travelItems: ${jsonEncode(travelItems)}')]));
   }
 
-  void _loadData({bool loadMore = false}) async {
-    TravelDao.getTravels(widget.groupChannelCode, pageIndex, 10)
-        .then((model) {
-          List<TravelItem> items = _filterItems(model?.data.list ?? []);
-          if (!mounted) {
-            return;
-          }
-          setState(() {
-            if (loadMore) {
-              travelItems.addAll(items);
-            } else {
-              travelItems = items;
-            }
-            isLoading = false;
-          });
-        })
-        .catchError((e) {
-          if (!mounted) {
-            return;
-          }
-          setState(() {
-            isLoading = false;
-          });
-        });
+  Future<void> _loadData({bool loadMore = false}) async {
+    try {
+      final model = await TravelDao.getTravels(widget.groupChannelCode, pageIndex, 10);
+      final items = _filterItems(model?.data.list ?? []);
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        if (loadMore) {
+          travelItems.addAll(items);
+        } else {
+          travelItems = items;
+        }
+        isLoading = false;
+      });
+    } catch (error) {
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   List<TravelItem> _filterItems(List<TravelItem>? list) {

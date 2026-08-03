@@ -10,18 +10,18 @@ class LoginDao {
   static Future<void> login({required String userName, required String password}) async {
     Map<String, String> paramsMap = {'userName': userName, 'password': password};
     var uri = Uri.https('api.devio.org', '/uapi/user/login', paramsMap);
-    final response = await http.post(uri, headers: hiHeaders(), body: paramsMap);
+    final response = await http.post(uri, headers: await hiHeaders(), body: paramsMap);
     Utf8Decoder utf8decoder = const Utf8Decoder(); // 修复中文乱码
     String bodyString = utf8decoder.convert(response.bodyBytes);
     if (response.statusCode == 200) {
       var resultData = json.decode(bodyString);
       if (resultData['code'] == 0 && resultData['data'] != null) {
-        _saveBoardingPass(resultData['data']);
+        await _saveBoardingPass(resultData['data']);
       } else {
-        _saveBoardingPass('dsdsdsds'); // 模拟登录成功，保存 boarding_pass
+        await _saveBoardingPass('dsdsdsds'); // 模拟登录成功，保存 boarding_pass
       }
     } else {
-      _saveBoardingPass('dsdsdsds'); // 模拟登录成功，保存 boarding_pass
+      await _saveBoardingPass('dsdsdsds'); // 模拟登录成功，保存 boarding_pass
     }
   }
 

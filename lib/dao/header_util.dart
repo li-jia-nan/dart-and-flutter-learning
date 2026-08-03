@@ -1,9 +1,9 @@
 import 'package:learning_app/dao/login_dao.dart';
 
-Map<String, String> hiHeaders() {
-  Map<String, String> headers = {
+Future<Map<String, String>> hiHeaders() async {
+  final boardingPass = await LoginDao.getBoardingPass();
+  return {
     'auto-token': 'aaaaaabbbbbbccccccc',
-    'boarding-pass': LoginDao.getBoardingPass().toString(),
+    if (boardingPass != null && boardingPass.isNotEmpty) 'boarding-pass': boardingPass,
   };
-  return headers;
 }

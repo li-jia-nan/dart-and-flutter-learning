@@ -11,7 +11,7 @@ class SearchDao {
 
   static Future<SearchModel?> fetch(String keyword) async {
     var url = Uri.parse('https://api.devio.org/uapi/search?q=$keyword');
-    final response = await http.get(url, headers: hiHeaders());
+    final response = await http.get(url, headers: await hiHeaders());
     Utf8Decoder utf8Decoder = const Utf8Decoder();
     String responseBody = utf8Decoder.convert(response.bodyBytes);
     if (response.statusCode == 401) {
