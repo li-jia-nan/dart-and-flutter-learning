@@ -68,7 +68,7 @@ class _HiWebViewState extends State<HiWebView> {
       child: Scaffold(
         body: Column(
           children: [
-            _appBar(Color(int.parse('0xff$statusBarColor')), backButtonColor),
+            _appBar(Colors.red, backButtonColor),
             Expanded(child: WebViewWidget(controller: _controller)),
           ],
         ),

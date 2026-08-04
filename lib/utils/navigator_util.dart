@@ -60,12 +60,8 @@ class NavigatorUtil {
     Navigator.push(
       safeContext!,
       MaterialPageRoute(
-        builder: (context) => HiWebView(
-          url: url,
-          title: title,
-          hideAppBar: hideAppBar,
-          satusBarColor: statusBarColor,
-        ),
+        builder: (context) =>
+            HiWebView(url: url, title: title, hideAppBar: false, satusBarColor: statusBarColor),
       ),
     );
   }

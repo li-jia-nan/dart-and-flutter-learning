@@ -64,7 +64,7 @@ class TravelItemWidget extends StatelessWidget {
       onTap: () {
         NavigatorUtil.jumpH5(
           context: context,
-          url: 'www.baidu.com',
+          url: 'https://www.baidu.com',
           title: 'detail',
           hideAppBar: false,
           statusBarColor: 'ffffff',
