@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_app/model/home_model.dart';
+import 'package:learning_app/utils/navigator_util.dart';
 
 // 网格卡片
 class GridNavWidget extends StatelessWidget {
@@ -78,7 +79,13 @@ class GridNavWidget extends StatelessWidget {
   Widget _wrapGesture(BuildContext context, Widget widget, LocalNavList model) {
     return GestureDetector(
       onTap: () {
-        //
+        NavigatorUtil.jumpH5(
+          context: context,
+          url: model.url,
+          title: model.title,
+          hideAppBar: model.hideAppBar,
+          statusBarColor: model.statusBarColor,
+        );
       },
       child: widget,
     );

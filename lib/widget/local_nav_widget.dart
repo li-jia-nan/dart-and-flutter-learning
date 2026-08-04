@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_app/model/home_model.dart';
+import 'package:learning_app/utils/navigator_util.dart';
 
 // 球区入口
 class LocalNavWidget extends StatelessWidget {
@@ -30,7 +31,13 @@ class LocalNavWidget extends StatelessWidget {
   Widget _item(BuildContext context, LocalNavList model) {
     return GestureDetector(
       onTap: () {
-        //
+        NavigatorUtil.jumpH5(
+          context: context,
+          url: model.url,
+          title: model.title,
+          hideAppBar: false,
+          statusBarColor: 'ffffff',
+        );
       },
       child: Column(
         children: [

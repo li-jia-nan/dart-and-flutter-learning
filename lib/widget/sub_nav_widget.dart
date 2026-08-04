@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_app/model/home_model.dart';
+import 'package:learning_app/utils/navigator_util.dart';
 
 class SubNavWidget extends StatelessWidget {
   final List<LocalNavList>? subNavList;
@@ -45,7 +46,13 @@ class SubNavWidget extends StatelessWidget {
       flex: 1,
       child: GestureDetector(
         onTap: () {
-          // Handle item tap
+          NavigatorUtil.jumpH5(
+            context: context,
+            url: model.url,
+            title: model.title,
+            hideAppBar: false,
+            statusBarColor: 'ffffff',
+          );
         },
         child: Column(
           mainAxisSize: MainAxisSize.min,

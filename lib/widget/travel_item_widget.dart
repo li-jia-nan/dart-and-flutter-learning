@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_app/model/travel_tab_model.dart' hide Image;
+import 'package:learning_app/utils/navigator_util.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 // 瀑布流卡片
@@ -61,7 +62,13 @@ class TravelItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // 点击跳转到H5页面
+        NavigatorUtil.jumpH5(
+          context: context,
+          url: 'www.baidu.com',
+          title: 'detail',
+          hideAppBar: false,
+          statusBarColor: 'ffffff',
+        );
       },
       child: Card(
         child: PhysicalModel(

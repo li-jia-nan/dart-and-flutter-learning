@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:learning_app/pages/home_page.dart';
 import 'package:learning_app/pages/login_page.dart';
+import 'package:learning_app/widget/hi_webview.dart';
 
 class NavigatorUtil {
   static BuildContext? _context;
@@ -35,5 +36,37 @@ class NavigatorUtil {
       // 如果没有上一页，则退出应用
       SystemNavigator.pop();
     }
+  }
+
+  // 跳转到 h5 页面
+  static void jumpH5({
+    BuildContext? context,
+    String? url,
+    String? title,
+    bool? hideAppBar,
+    String? statusBarColor,
+  }) {
+    BuildContext? safeContext;
+    if (url == null || url.isEmpty) {
+      return;
+    }
+    if (context != null) {
+      safeContext = context;
+    } else if (_context?.mounted ?? false) {
+      safeContext = _context;
+    } else {
+      return;
+    }
+    Navigator.push(
+      safeContext!,
+      MaterialPageRoute(
+        builder: (context) => HiWebView(
+          url: url,
+          title: title,
+          hideAppBar: hideAppBar,
+          satusBarColor: statusBarColor,
+        ),
+      ),
+    );
   }
 }

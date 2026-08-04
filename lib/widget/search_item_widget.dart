@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_app/model/search_model.dart';
+import 'package:learning_app/utils/navigator_util.dart';
 
 class SearchItemWidget extends StatelessWidget {
   final SearchModel searchModel;
@@ -104,7 +105,13 @@ class SearchItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // 点击搜索结果项的回调
+        NavigatorUtil.jumpH5(
+          context: context,
+          url: searchItem.url,
+          title: '详情页',
+          hideAppBar: false,
+          statusBarColor: 'ffffff',
+        );
       },
       child: _item,
     );

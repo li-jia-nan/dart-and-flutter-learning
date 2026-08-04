@@ -2,6 +2,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:learning_app/model/home_model.dart';
+import 'package:learning_app/utils/navigator_util.dart';
 import 'package:learning_app/utils/screen_adapter_helper.dart';
 
 class BannerWidget extends StatefulWidget {
@@ -43,7 +44,13 @@ class _BannerWidgetState extends State<BannerWidget> {
   Widget _tabImage(BannerList model, double width) {
     return GestureDetector(
       onTap: () {
-        // NavigatorUtil.push(context, item);
+        NavigatorUtil.jumpH5(
+          context: context,
+          url: model.url,
+          title: model.url,
+          hideAppBar: false,
+          statusBarColor: 'ffffff',
+        );
       },
       child: Image.network(model.icon, width: width, fit: BoxFit.cover),
     );
