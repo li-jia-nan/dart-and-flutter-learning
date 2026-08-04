@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:learning_app/pages/home_page.dart';
 import 'package:learning_app/pages/login_page.dart';
 
@@ -30,6 +31,9 @@ class NavigatorUtil {
   static void pop(BuildContext context) {
     if (Navigator.canPop(context)) {
       Navigator.pop(context);
+    } else {
+      // 如果没有上一页，则退出应用
+      SystemNavigator.pop();
     }
   }
 }
