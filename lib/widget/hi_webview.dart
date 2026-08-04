@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:learning_app/utils/navigator_util.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -63,32 +64,35 @@ class _HiWebViewState extends State<HiWebView> {
   }
 
   void _initWebViewController() {
-    _controller = WebViewController()
-      ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setBackgroundColor(Color(0x00000000))
+    _controller = WebViewController()..setJavaScriptMode(JavaScriptMode.unrestricted);
+
+    // webview_flutter_wkwebview does not support setBackgroundColor on macOS.
+    // Calling it there tries to set WKWebView.isOpaque and throws at runtime.
+    if (defaultTargetPlatform != TargetPlatform.macOS) {
+      _controller.setBackgroundColor(const Color(0x00000000));
+    }
+
+    _controller
       ..setNavigationDelegate(
         NavigationDelegate(
           onProgress: (int progress) {
-            debugPrint('WebView is loading (progress : $progress%)');
+            //
           },
           onPageStarted: (String url) {
-            debugPrint('Page started loading: $url');
+            //
           },
           onPageFinished: (String url) {
-            debugPrint('Page finished loading: $url');
             // 页面加载完成之后才能执行 js
             _handBackForbid(url);
           },
           onWebResourceError: (WebResourceError error) {
-            debugPrint(error.toString());
+            debugPrint('erroaaaaaar: ${error.description}');
           },
           onNavigationRequest: (NavigationRequest request) {
             if (_isToMain(request.url)) {
-              debugPrint('blocking navigation to ${request.url}');
               NavigatorUtil.pop(context);
               return NavigationDecision.prevent;
             } else {
-              debugPrint('allowing navigation to ${request.url}');
               return NavigationDecision.navigate;
             }
           },

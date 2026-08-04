@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learning_app/widget/hi_webview.dart';
 
 class MyPage extends StatefulWidget {
   const MyPage({super.key});
@@ -12,7 +13,12 @@ class _MyPageState extends State<MyPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('我的')),
-      body: Column(children: const [Text('我的页面')]),
+      body: const HiWebView(
+        url: 'http://www.lijianan.com',
+        hideAppBar: true,
+        satusBarColor: 'ffffff',
+        title: '我的',
+      ),
     );
   }
 }
