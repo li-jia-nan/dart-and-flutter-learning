@@ -8,17 +8,20 @@ class MyPage extends StatefulWidget {
   State<MyPage> createState() => _MyPageState();
 }
 
-class _MyPageState extends State<MyPage> {
+class _MyPageState extends State<MyPage> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('我的')),
-      body: const HiWebView(
-        url: 'https://www.google.com',
+    super.build(context);
+    return const Scaffold(
+      body: HiWebView(
+        url: 'https://m.ctrip.com/webapp/myctrip/',
         hideAppBar: true,
-        satusBarColor: 'ffffff',
-        title: '我的',
+        backForbid: true,
+        satusBarColor: '4c5bca',
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

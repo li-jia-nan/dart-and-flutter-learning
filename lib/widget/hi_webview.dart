@@ -25,7 +25,7 @@ class HiWebView extends StatefulWidget {
 }
 
 class _HiWebViewState extends State<HiWebView> {
-  final List<String> _catchUrls = ['m.ctrip.com', 'm.ctrip.com/html5/', 'm.ctrip.com/html5'];
+  static const Set<String> _ctripMainPaths = {'', '/', '/html5', '/html5/'};
   String? _url = '';
   late WebViewController _controller;
 
@@ -102,25 +102,33 @@ class _HiWebViewState extends State<HiWebView> {
             debugPrint('erroaaaaaar: ${error.description}');
           },
           onNavigationRequest: (NavigationRequest request) {
-            if (_isToMain(request.url)) {
-              NavigatorUtil.pop(context);
+            if (_isToMain(request.url) && mounted && Navigator.canPop(context)) {
+              Navigator.pop(context);
               return NavigationDecision.prevent;
-            } else {
-              return NavigationDecision.navigate;
             }
+            return NavigationDecision.navigate;
           },
         ),
       )
       ..loadRequest(Uri.parse(_url!));
   }
 
+  // 隐藏 h5 页面返回按钮，禁止返回
   void _handBackForbid(String url) {
-    //
+    const jsStr =
+        'const element = document.querySelector(".animationComponent.rn-view");'
+        'if (element) {'
+        'element.style.display = "none";'
+        '}';
+    if (widget.backForbid ?? false) {
+      _controller.runJavaScript(jsStr);
+    }
   }
 
   // 判断 h5 是否是返回到主页面
   bool _isToMain(String url) {
-    return _catchUrls.any((element) => url.contains(element));
+    final uri = Uri.tryParse(url);
+    return uri != null && uri.host == 'm.ctrip.com' && _ctripMainPaths.contains(uri.path);
   }
 
   Widget _appBar(Color backgroundColor, Color backButtonColor) {
