@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:learning_app/utils/navigator_util.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -45,7 +45,21 @@ class _HiWebViewState extends State<HiWebView> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    String statusBarColor = widget.satusBarColor ?? 'ffffff';
+    Color backButtonColor;
+    if (statusBarColor == 'ffffff') {
+      backButtonColor = Colors.black;
+    } else {
+      backButtonColor = Colors.white;
+    }
+    return Scaffold(
+      body: Column(
+        children: [
+          _appBar(Color(int.parse('0xff$statusBarColor')), backButtonColor),
+          Expanded(child: WebViewWidget(controller: _controller)),
+        ],
+      ),
+    );
   }
 
   void _initWebViewController() {
@@ -90,5 +104,42 @@ class _HiWebViewState extends State<HiWebView> {
   // 判断 h5 是否是返回到主页面
   bool _isToMain(String url) {
     return _catchUrls.any((element) => url.contains(element));
+  }
+
+  Widget _appBar(Color backgroundColor, Color backButtonColor) {
+    double top = MediaQuery.of(context).padding.top;
+    if (widget.hideAppBar ?? false) {
+      return Container(color: backgroundColor, height: top);
+    }
+    return Container(
+      color: backgroundColor,
+      padding: EdgeInsets.fromLTRB(0, top, 0, 0),
+      child: FractionallySizedBox(
+        widthFactor: 1,
+        child: Stack(children: [_backButton(backgroundColor), _title(backButtonColor)]),
+      ),
+    );
+  }
+
+  Widget _backButton(Color backButtonColor) {
+    return GestureDetector(
+      onTap: () {
+        NavigatorUtil.pop(context);
+      },
+      child: Container(
+        margin: const EdgeInsets.only(left: 10),
+        child: Icon(Icons.close, color: backButtonColor, size: 26),
+      ),
+    );
+  }
+
+  Widget _title(Color backButtonColor) {
+    return Positioned(
+      left: 0,
+      right: 0,
+      child: Center(
+        child: Text(widget.title ?? '', style: TextStyle(color: backButtonColor, fontSize: 20)),
+      ),
+    );
   }
 }
