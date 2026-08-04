@@ -53,12 +53,25 @@ class _HiWebViewState extends State<HiWebView> {
     } else {
       backButtonColor = Colors.white;
     }
-    return Scaffold(
-      body: Column(
-        children: [
-          _appBar(Color(int.parse('0xff$statusBarColor')), backButtonColor),
-          Expanded(child: WebViewWidget(controller: _controller)),
-        ],
+
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (bool didPop, result) async {
+        if (await _controller.canGoBack()) {
+          _controller.goBack();
+        } else {
+          if (context.mounted) {
+            NavigatorUtil.pop(context);
+          }
+        }
+      },
+      child: Scaffold(
+        body: Column(
+          children: [
+            _appBar(Color(int.parse('0xff$statusBarColor')), backButtonColor),
+            Expanded(child: WebViewWidget(controller: _controller)),
+          ],
+        ),
       ),
     );
   }

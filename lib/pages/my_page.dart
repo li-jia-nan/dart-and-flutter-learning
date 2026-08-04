@@ -14,7 +14,7 @@ class _MyPageState extends State<MyPage> {
     return Scaffold(
       appBar: AppBar(title: Text('我的')),
       body: const HiWebView(
-        url: 'http://www.lijianan.com',
+        url: 'https://www.google.com',
         hideAppBar: true,
         satusBarColor: 'ffffff',
         title: '我的',
