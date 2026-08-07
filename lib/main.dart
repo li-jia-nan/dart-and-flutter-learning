@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learning_app/base/flutter2js_by_javascript.dart';
 import 'package:learning_app/base/flutter2js_by_url.dart';
 import 'package:learning_app/base/js2flutter_by_channel.dart';
 import 'package:learning_app/base/js2flutter_by_url.dart';
@@ -43,6 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
             _navButton(context, const Js2flutterByUrl(), 'Js 向 flutter 传递参数，通过 url'),
             _navButton(context, const Js2flutterByChannel(), 'Js 向 flutter 传递参数，通过 channel'),
             _navButton(context, const Flutter2jsByUrl(), 'flutter 向 Js 传递参数，通过 url'),
+            _navButton(context, const Flutter2jsByJavascript(), 'flutter 向 Js 传递参数，通过运行 js'),
           ],
         ),
       ),
