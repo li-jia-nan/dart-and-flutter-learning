@@ -26,6 +26,7 @@ const String h5JS2FlutterByUrl = '''
 </html>
 ''';
 
+//  Js 向 flutter 传递参数
 class Js2flutterByUrl extends StatefulWidget {
   const Js2flutterByUrl({super.key});
 
