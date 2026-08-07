@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learning_app/base/js2flutter_by_channel.dart';
 import 'package:learning_app/base/js2flutter_by_url.dart';
 
 void main() => runApp(const MyApp());
@@ -9,7 +10,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MyHomePage(title: 'Flutter Demo Home Page');
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    );
   }
 }
 
@@ -33,7 +38,10 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[_navButton(context, const Js2flutterByUrl(), '通过 Js 向 flutter 传递参数')],
+          children: <Widget>[
+            _navButton(context, const Js2flutterByUrl(), 'Js 向 flutter 传递参数，通过 url'),
+            _navButton(context, const Js2flutterByChannel(), 'Js 向 flutter 传递参数，通过 channel'),
+          ],
         ),
       ),
     );
