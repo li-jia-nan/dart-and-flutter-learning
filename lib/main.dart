@@ -3,6 +3,7 @@ import 'package:learning_app/base/flutter2js_by_javascript.dart';
 import 'package:learning_app/base/flutter2js_by_url.dart';
 import 'package:learning_app/base/js2flutter_by_channel.dart';
 import 'package:learning_app/base/js2flutter_by_url.dart';
+import 'package:learning_app/jump/flutter_h5_jump_asset.dart';
 
 void main() => runApp(const MyApp());
 
@@ -45,6 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
             _navButton(context, const Js2flutterByChannel(), 'Js 向 flutter 传递参数，通过 channel'),
             _navButton(context, const Flutter2jsByUrl(), 'flutter 向 Js 传递参数，通过 url'),
             _navButton(context, const Flutter2jsByJavascript(), 'flutter 向 Js 传递参数，通过运行 js'),
+            _navButton(context, const FlutterH5JumpAsset(), '通过 loadFlutterAsset 加载 H5 页面'),
           ],
         ),
       ),
