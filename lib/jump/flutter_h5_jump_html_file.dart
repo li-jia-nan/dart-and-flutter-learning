@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:path/path.dart' as path;
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -63,9 +64,7 @@ class _FlutterH5JumpHtmlFileState extends State<FlutterH5JumpHtmlFile> {
   Future<String> _perpareLocalFile() async {
     // 将 h5String 写入到本地文件中
     final String tmpDir = (await getTemporaryDirectory()).path;
-    final File file = File(
-      <String>{tmpDir, 'hi-jianan', 'index.html'}.join(Platform.pathSeparator),
-    );
+    final File file = File(path.join(tmpDir, 'hi-jianan', 'index.html'));
     await file.create(recursive: true);
     await file.writeAsString(h5String);
     return file.path;
