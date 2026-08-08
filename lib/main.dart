@@ -5,6 +5,7 @@ import 'package:learning_app/base/js2flutter_by_channel.dart';
 import 'package:learning_app/base/js2flutter_by_url.dart';
 import 'package:learning_app/jump/flutter_h5_jump_asset.dart';
 import 'package:learning_app/jump/flutter_h5_jump_html_file.dart';
+import 'package:learning_app/login/flutter_h5_login_sync_by_cookie.dart';
 
 void main() => runApp(const MyApp());
 
@@ -49,6 +50,11 @@ class _MyHomePageState extends State<MyHomePage> {
             _navButton(context, const Flutter2jsByJavascript(), 'flutter 向 Js 传递参数，通过运行 js'),
             _navButton(context, const FlutterH5JumpAsset(), '通过 loadFlutterAsset 加载 H5 页面'),
             _navButton(context, const FlutterH5JumpHtmlFile(), '通过 loadFile 的方式加载 H5 页面'),
+            _navButton(
+              context,
+              const FlutterH5LoginSyncByCookie(),
+              'Flutter 通过 Cookie 同步登录状态给 H5 页面',
+            ),
           ],
         ),
       ),
