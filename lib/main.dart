@@ -5,6 +5,7 @@ import 'package:learning_app/base/js2flutter_by_channel.dart';
 import 'package:learning_app/base/js2flutter_by_url.dart';
 import 'package:learning_app/jump/flutter_h5_jump_asset.dart';
 import 'package:learning_app/jump/flutter_h5_jump_html_file.dart';
+import 'package:learning_app/login/flutter_h5_login_sync_by_channel.dart';
 import 'package:learning_app/login/flutter_h5_login_sync_by_cookie.dart';
 
 void main() => runApp(const MyApp());
@@ -54,6 +55,11 @@ class _MyHomePageState extends State<MyHomePage> {
               context,
               const FlutterH5LoginSyncByCookie(),
               'Flutter 通过 Cookie 同步登录状态给 H5 页面',
+            ),
+            _navButton(
+              context,
+              const FlutterH5LoginSyncByChannel(),
+              'Flutter 通过 Channel 的方式将登录状态同步给 H5',
             ),
           ],
         ),
