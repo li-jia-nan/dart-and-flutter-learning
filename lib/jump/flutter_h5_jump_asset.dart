@@ -16,7 +16,7 @@ class _FlutterH5JumpAssetState extends State<FlutterH5JumpAsset> {
     onPressed: () {
       _onLoadFlutterAsset(context);
     },
-    child: const Text('重新加载', style: TextStyle(fontSize: 16, color: Colors.white)),
+    child: const Text('加载 H5', style: TextStyle(fontSize: 16, color: Colors.white)),
   );
 
   @override
@@ -36,7 +36,7 @@ class _FlutterH5JumpAssetState extends State<FlutterH5JumpAsset> {
     );
   }
 
-  void _onLoadFlutterAsset(BuildContext context) async {
+  Future<void> _onLoadFlutterAsset(BuildContext context) async {
     // 通过 loadFlutterAsset 加载 H5 页面
     await _controller.loadFlutterAsset('assets/hiH5/index.html');
   }
