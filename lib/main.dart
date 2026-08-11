@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:learning_app/base/flutter2js_by_javascript.dart';
-import 'package:learning_app/base/flutter2js_by_url.dart';
-import 'package:learning_app/base/js2flutter_by_channel.dart';
-import 'package:learning_app/base/js2flutter_by_url.dart';
-import 'package:learning_app/jump/flutter_h5_jump_asset.dart';
-import 'package:learning_app/jump/flutter_h5_jump_html_file.dart';
-import 'package:learning_app/login/flutter_h5_login_sync_by_channel.dart';
-import 'package:learning_app/login/flutter_h5_login_sync_by_cookie.dart';
+import 'package:get/get.dart';
+import 'package:learning_app/dao/login_dao.dart';
+import 'package:learning_app/navigator/tab_navigator.dart';
+import 'package:learning_app/utils/screen_adapter_helper.dart';
 
 void main() => runApp(const MyApp());
 
@@ -16,10 +12,24 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: FutureBuilder<String?>(
+        future: LoginDao.getBoardingPass(),
+        builder: (BuildContext context, AsyncSnapshot<String?> snapshot) {
+          ScreenHelper.init(context);
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.data == null) {
+              return const TabNavigator();
+            } else {
+              return const TabNavigator();
+            }
+          } else {
+            return const Scaffold(body: Center(child: CircularProgressIndicator()));
+          }
+        },
+      ),
     );
   }
 }
@@ -34,9 +44,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    debugPrint('0.1 + 0.2 = ${0.1 + 0.2}');
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -45,35 +62,17 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _navButton(context, const Js2flutterByUrl(), 'Js 向 flutter 传递参数，通过 url'),
-            _navButton(context, const Js2flutterByChannel(), 'Js 向 flutter 传递参数，通过 channel'),
-            _navButton(context, const Flutter2jsByUrl(), 'flutter 向 Js 传递参数，通过 url'),
-            _navButton(context, const Flutter2jsByJavascript(), 'flutter 向 Js 传递参数，通过运行 js'),
-            _navButton(context, const FlutterH5JumpAsset(), '通过 loadFlutterAsset 加载 H5 页面'),
-            _navButton(context, const FlutterH5JumpHtmlFile(), '通过 loadFile 的方式加载 H5 页面'),
-            _navButton(
-              context,
-              const FlutterH5LoginSyncByCookie(),
-              'Flutter 通过 Cookie 同步登录状态给 H5 页面',
-            ),
-            _navButton(
-              context,
-              const FlutterH5LoginSyncByChannel(),
-              'Flutter 通过 Channel 的方式将登录状态同步给 H5',
-            ),
+          children: [
+            const Text('当前点击按钮次数：'),
+            Text('$_counter', style: const TextStyle(fontSize: 30)),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _navButton(BuildContext context, Widget page, String title) {
-    return FilledButton(
-      onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => page));
-      },
-      child: Text(title),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
