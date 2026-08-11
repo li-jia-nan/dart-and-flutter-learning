@@ -47,6 +47,7 @@ dependencies:
   path_provider: ^2.1.6
   path: ^1.9.1
   flutter_splash_screen: ^4.0.0
+  get: ^4.7.3
 
 dev_dependencies:
   flutter_test:
