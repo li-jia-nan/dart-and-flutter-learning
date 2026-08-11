@@ -67,7 +67,7 @@ class _FlutterH5LoginSyncByChannelState extends State<FlutterH5LoginSyncByChanne
           const info = {"name": "lijianan-yuyuyu", "age": '18', 'uid': '123456'};
           final infoString = json.encode(info);
           // 调用 H5 的方法，将登录信息传递给 H5
-          _controller.runJavaScript('hiCallJs($infoString)');
+          _controller.runJavaScript('hiCallJs(JSON.stringify($infoString))');
         },
       );
   }
