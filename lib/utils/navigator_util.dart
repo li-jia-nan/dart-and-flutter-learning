@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:learning_app/pages/home_page.dart';
+import 'package:learning_app/navigator/tab_navigator.dart';
 import 'package:learning_app/pages/login_page.dart';
 import 'package:learning_app/widget/hi_webview.dart';
 
@@ -17,7 +17,7 @@ class NavigatorUtil {
 
   // 跳转到首页
   static void goToHome(BuildContext context) {
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (cntext) => const HomePage()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const TabNavigator()));
   }
 
   // 跳转到登录页

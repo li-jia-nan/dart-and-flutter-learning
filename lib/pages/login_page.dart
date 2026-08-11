@@ -89,14 +89,18 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-  void _login(BuildContext context) {
+  Future<void> _login(BuildContext context) async {
     try {
-      var result = LoginDao.login(userName: username!, password: password!);
-      debugPrint('登录结果: $result');
-      NavigatorUtil.goToHome(context);
+      await LoginDao.login(userName: username!, password: password!);
+      debugPrint('登录成功');
+      if (mounted) {
+        NavigatorUtil.goToHome(context);
+      }
     } catch (e) {
       debugPrint('登录异常: $e');
-      NavigatorUtil.goToHome(context);
+      if (mounted) {
+        NavigatorUtil.goToHome(context);
+      }
     }
   }
 
