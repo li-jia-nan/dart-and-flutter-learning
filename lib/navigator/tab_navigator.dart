@@ -4,7 +4,6 @@ import 'package:learning_app/pages/home_page.dart';
 import 'package:learning_app/pages/my_page.dart';
 import 'package:learning_app/pages/search_page.dart';
 import 'package:learning_app/pages/travel_page.dart';
-import 'package:learning_app/utils/navigator_util.dart';
 
 class TabNavigator extends StatefulWidget {
   const TabNavigator({super.key});
@@ -27,7 +26,7 @@ class _TabNavigatorState extends State<TabNavigator> {
 
   @override
   Widget build(BuildContext context) {
-    NavigatorUtil.updateContext(context);
+    // NavigatorUtil.updateContext(context);
     return Scaffold(
       body: PageView(
         controller: _controller,
