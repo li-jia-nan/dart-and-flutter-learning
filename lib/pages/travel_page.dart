@@ -1,59 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:learning_app/dao/travel_dao.dart';
-import 'package:learning_app/model/travel_category_model.dart';
+import 'package:get/get.dart';
+import 'package:learning_app/controller/travel_controller.dart';
 import 'package:learning_app/pages/travel_tab_page.dart';
 
-class TravelPage extends StatefulWidget {
+class TravelPage extends StatelessWidget {
   const TravelPage({super.key});
 
-  @override
-  State<TravelPage> createState() => _TravelPageState();
-}
-
-class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
-  List<TravelTab> tabs = [];
-  TravelCategoryModel? travelTabModel;
-  late TabController _tabController;
-
-  Widget get _tabBar => TabBar(
-    controller: _tabController,
-    isScrollable: true,
-    labelColor: Colors.black,
-    indicatorColor: Color(0xff2fcfbb),
-    tabAlignment: TabAlignment.start,
-    indicatorSize: TabBarIndicatorSize.tab,
-    tabs: tabs.map<Tab>((tab) {
-      return Tab(text: tab.labelName);
-    }).toList(),
-  );
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: tabs.length, vsync: this);
-    TravelDao.getCategory().then((TravelCategoryModel? model) {
-      if (!mounted) {
-        return;
-      }
-      final newTabs = model?.data.tabs ?? [];
-      final previousController = _tabController;
-      setState(() {
-        tabs = newTabs;
-        travelTabModel = model;
-        _tabController = TabController(length: tabs.length, vsync: this);
-      });
-      previousController.dispose();
-    });
+  Widget get _tabBar {
+    return GetBuilder<TravelController>(
+      builder: (controller) {
+        return TabBar(
+          controller: controller.tabController,
+          isScrollable: true,
+          labelColor: Colors.black,
+          indicatorColor: Color(0xff2fcfbb),
+          tabAlignment: TabAlignment.start,
+          indicatorSize: TabBarIndicatorSize.tab,
+          tabs: controller.tabs.map<Tab>((tab) {
+            return Tab(text: tab.labelName);
+          }).toList(),
+        );
+      },
+    );
   }
 
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
+  Widget get _tabBarView {
+    return GetBuilder<TravelController>(
+      builder: (controller) {
+        return TabBarView(
+          controller: controller.tabController,
+          children: controller.tabs.map((tab) {
+            return TravelTabPage(groupChannelCode: tab.groupChannelCode);
+          }).toList(),
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    Get.put(TravelController());
     final top = MediaQuery.of(context).padding.top;
     return Scaffold(
       body: Column(
@@ -63,14 +49,7 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
             padding: EdgeInsets.only(top: top),
             child: _tabBar,
           ),
-          Expanded(
-            child: TabBarView(
-              controller: _tabController,
-              children: tabs.map((tab) {
-                return TravelTabPage(groupChannelCode: tab.groupChannelCode);
-              }).toList(),
-            ),
-          ),
+          Expanded(child: _tabBarView),
         ],
       ),
     );
