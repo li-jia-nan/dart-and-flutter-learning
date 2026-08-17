@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:learning_app/navigator/tab_navigator.dart';
 import 'package:learning_app/pages/login_page.dart';
 import 'package:learning_app/widget/hi_webview.dart';
 
@@ -13,7 +12,8 @@ class NavigatorUtil {
 
   // 跳转到首页
   static void goToHome(BuildContext context) {
-    Get.offAll(const TabNavigator());
+    // Get.offAll(const TabNavigator());
+    // todo 跳转到首页
   }
 
   // 跳转到登录页
