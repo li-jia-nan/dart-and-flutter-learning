@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:learning_app/mvvm/binding/initialBinding.dart';
+import 'package:learning_app/mvvm/routes/app_pages.dart';
 
 void main() => runApp(const MyApp());
 
@@ -12,7 +14,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
-      // todo 工程改造
+      initialRoute: AppPages.init,
+      initialBinding: InitialBinding(),
+      getPages: AppPages.routes,
     );
   }
 }
