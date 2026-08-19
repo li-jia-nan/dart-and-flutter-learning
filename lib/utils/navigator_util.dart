@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learning_app/mvvm/routes/app_pages.dart';
-import 'package:learning_app/pages/login_page.dart';
+import 'package:learning_app/mvvm/login/views/login_page.dart';
 import 'package:learning_app/widget/hi_webview.dart';
 
 class NavigatorUtil {
@@ -12,14 +12,13 @@ class NavigatorUtil {
   }
 
   // 跳转到首页
-  static void goToHome(BuildContext context) {
-    // 当使用 Getx 依赖注入时，需要使用 Get.offAllNamed 跳转到首页，才能正确初始化首页的依赖
+  static void goToHome() {
     Get.offAllNamed(Routes.main);
   }
 
   // 跳转到登录页
   static void goToLogin() {
-    Get.offAll(const LoginPage());
+    Get.offAllNamed(Routes.login);
   }
 
   // 返回上一页
